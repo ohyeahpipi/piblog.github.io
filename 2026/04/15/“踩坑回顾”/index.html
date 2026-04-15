@@ -87,14 +87,14 @@
         
         <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="“github+cloudflare+hexo个人网站搭建踩坑回顾”">
+<meta property="og:title" content="“GitHub+Cloudflare+Hexo 个人网站搭建踩坑回顾”">
 <meta property="og:url" content="http://example.com/2026/04/15/%E2%80%9C%E8%B8%A9%E5%9D%91%E5%9B%9E%E9%A1%BE%E2%80%9D/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/images/redefine-og.webp">
 <meta property="article:published_time" content="2026-04-15T03:27:20.000Z">
-<meta property="article:modified_time" content="2026-04-15T07:31:19.514Z">
+<meta property="article:modified_time" content="2026-04-15T09:57:27.982Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/redefine-og.webp">
@@ -109,7 +109,7 @@
     
     <title>
         
-            “github+cloudflare+hexo个人网站搭建踩坑回顾” | 与你共度的朝暮
+            “GitHub+Cloudflare+Hexo 个人网站搭建踩坑回顾” | 与你共度的朝暮
         
     </title>
 
@@ -483,7 +483,7 @@
 		<div class="article-title relative w-full">
 			
 			<div class="w-full flex items-center pt-6 justify-start">
-				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">“github+cloudflare+hexo个人网站搭建踩坑回顾”</h1>
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">“GitHub+Cloudflare+Hexo 个人网站搭建踩坑回顾”</h1>
 			</div>
 			
 		</div>
@@ -491,7 +491,7 @@
 		
 		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
 			<div class="avatar w-[46px] h-[46px] shrink-0 rounded-medium border border-border-color p-px">
-				<img src="/images/redefine-avatar.svg">
+				<img src="/images2/blog-avatar.webp">
 			</div>
 			<div class="info flex flex-col justify-between">
 				<div class="author flex items-center">
@@ -511,8 +511,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2026-04-15 15:31:19</span>
-            <span class="mobile">2026-04-15 15:31:19</span>
+            <span class="desktop">2026-04-15 17:57:27</span>
+            <span class="mobile">2026-04-15 17:57:27</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -555,8 +555,22 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<p>很久之前想起来了有这么一个网站</p>
-
+			<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>作为一个”零”代码基础的小白，搭建个人博客的主要目的是记录一下踩过的那些坑和个人所思所想。(当然不会是为了把域名用起来包的这盘饺子🥟)</p>
+<p>使用GitHub+Cloudflare+Hexo 这个组合完全是因为便宜，除了域名之外完全免费，无需购买VPS或服务器，GitHub提供免费托管，Cloudflare提供免费CDN和DNS(CF真是赛博活菩萨！)</p>
+<p>除此之外还有一些别的优势，比如: <strong>全球加速</strong>(Cloudflare全球275+节点CDN加速)，<strong>安全可靠</strong>(Cloudflare提供DDoS防护、WAF、HTTPS加密，GitHub提供版本控制和代码安全)，<strong>高度定制化</strong>(Hexo有丰富主题(500+)和插件生态，可完全自定义博客外观和功能)，<strong>简化工作流</strong>(Markdown写作→本地预览→Git提交→自动部署)等等…</p>
+<p>如今借助AI工具这套方案可以快捷方便的搭建起来，现在也算是马马虎虎搭建起来了，简单记录一下踩过的坑吧。</p>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ul>
+<li>一台电脑: MacBook Pro 2016款，系统12.7.6 Monterey，intel芯片</li>
+<li>一个Github账号: 代码托管</li>
+<li>一个Cloudflare账号(可以用Github账号登录): CDN、DNS、DDoS、HTTPS相关服务</li>
+<li>一个炫酷的域名(这是核心👻): 可以从阿里云上购买</li>
+</ul>
+<h1 id="开始操作"><a href="#开始操作" class="headerlink" title="开始操作"></a>开始操作</h1><p>跟着AI的方法断断续续大概花了2天时间…</p>
+<h2 id="账号准备"><a href="#账号准备" class="headerlink" title="账号准备"></a>账号准备</h2><p>略，就是域名(需要实名)，Github账号(<a class="link"   target="_blank" rel="noopener" href="https://github.com)和cloudflare账号(https//dash.cloudflare.com)" >https://github.com)和Cloudflare账号(https://dash.cloudflare.com)<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<h2 id="工具安装（Mac-Intel-芯片专用）"><a href="#工具安装（Mac-Intel-芯片专用）" class="headerlink" title="工具安装（Mac Intel 芯片专用）"></a>工具安装（Mac Intel 芯片专用）</h2><p>安装Node.js和git：</p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 安装Homebrew（Mac必备包管理器，Intel芯片官方命令）</span></span><br><span class="line">/bin/bash -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>&quot;</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 安装Git+Node.js（Hexo依赖）</span></span><br><span class="line">brew install git node </span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 验证安装（输完回车，显示版本号即成功）</span></span><br><span class="line">git --version</span><br><span class="line">node --version</span><br><span class="line">npm --version</span><br></pre></td></tr></table></figure></div>
+<h2 id="Hexo-博客安装"><a href="#Hexo-博客安装" class="headerlink" title="Hexo 博客安装"></a>Hexo 博客安装</h2><p>登录Hexo官网(<a class="link"   target="_blank" rel="noopener" href="https://hexo.io/zh-cn/),%E5%8F%82%E7%85%A7%E6%8C%87%E4%BB%A4%E6%89%A7%E8%A1%8C" >https://hexo.io/zh-cn/),参照指令执行<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>:</p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br><span class="line">hexo init blog</span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line">npm install</span><br><span class="line"><span class="comment"># 启动本地服务</span></span><br><span class="line">hexo server</span><br><span class="line"></span><br><span class="line"><span class="comment"># 验证安装，打开浏览器，在网址栏输入</span></span><br><span class="line">http://localhost:4000</span><br><span class="line"><span class="comment"># ctl + c结束</span></span><br></pre></td></tr></table></figure></div>
 		</div>
 
 		
@@ -593,8 +607,8 @@
 		<div class="post-toc-wrap">
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
-		<div class="page-title">“github+cloudflare+hexo个人网站搭建踩坑回顾”</div>
-		
+		<div class="page-title">“GitHub+Cloudflare+Hexo 个人网站搭建踩坑回顾”</div>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E6%93%8D%E4%BD%9C"><span class="nav-text">开始操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%A6%E5%8F%B7%E5%87%86%E5%A4%87"><span class="nav-text">账号准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85%EF%BC%88Mac-Intel-%E8%8A%AF%E7%89%87%E4%B8%93%E7%94%A8%EF%BC%89"><span class="nav-text">工具安装（Mac Intel 芯片专用）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo-%E5%8D%9A%E5%AE%A2%E5%AE%89%E8%A3%85"><span class="nav-text">Hexo 博客安装</span></a></li></ol></li></ol>
 
 	</div>
 </div>
