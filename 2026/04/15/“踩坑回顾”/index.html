@@ -94,7 +94,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/images/redefine-og.webp">
 <meta property="article:published_time" content="2026-04-15T03:27:20.000Z">
-<meta property="article:modified_time" content="2026-04-15T11:01:05.987Z">
+<meta property="article:modified_time" content="2026-04-16T03:54:40.603Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/redefine-og.webp">
@@ -511,8 +511,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2026-04-15 19:01:05</span>
-            <span class="mobile">2026-04-15 19:01:05</span>
+            <span class="desktop">2026-04-16 11:54:40</span>
+            <span class="mobile">2026-04-16 11:54:40</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -595,6 +595,7 @@
 <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">repo: git@github.com:zhangsan/zhangsanblog.github.io.git</span><br></pre></td></tr></table></figure></div>
 <p>保存后重新执行：</p>
 <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure></div>
+<h2 id="Cloudflare-连接-Github"><a href="#Cloudflare-连接-Github" class="headerlink" title="Cloudflare 连接 Github"></a>Cloudflare 连接 Github</h2><p>登录Cloudflare,左侧Workers和Pages。右上角创建应用程序,选择Github，然后从里面选择你的GitHub仓库名。然后命名，一直下一步到结束。<br>最后点进去就能看见你的域名xxx.xxx.workers.dev</p>
 <h2 id="媒体文件存储优化"><a href="#媒体文件存储优化" class="headerlink" title="媒体文件存储优化"></a>媒体文件存储优化</h2><ol>
 <li>本地图片压缩<br>因为Cloudflare R2桶只有10G的免费空间，所有需要把博客图片压缩成webp格式</li>
 </ol>
@@ -617,11 +618,51 @@
 </ol>
 <ul>
 <li>登录 Cloudflare，左侧「R2」→「创建存储桶」，命名（比如 blog-bucket）</li>
-<li>进入存储桶→「设置」→「公共访问」→开启「公共访问」，保存</li>
+<li>进入存储桶→「设置」→「公共访问」→开启「公共访问」，保存<br>这里需要订阅免费计划，但是需要绑定一张信用卡。在咸鱼上5块钱找一个就行。</li>
 <li>记录「公共端点」（比如 <a class="link"   target="_blank" rel="noopener" href="https://xxx.r2.dev),后续用/" >https://xxx.r2.dev），后续用<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
 <li>本地上传：用 Cloudflare R2 面板直接拖拽上传<br>点开图片就能看到图片外链接，比如：<br><a class="link"   target="_blank" rel="noopener" href="https://pub-eba8dd758b454d8f98f72f87633a032b.r2.dev/%E6%97%A0%E6%9C%9F%E8%BF%B7%E9%80%947.webp" >https://pub-eba8dd758b454d8f98f72f87633a032b.r2.dev/%E6%97%A0%E6%9C%9F%E8%BF%B7%E9%80%947.webp<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li>R2桶与 Workers 网址关联</li>
 </ul>
-<h2 id="阿里云域名-Cloudflare-解析（绑定域名）"><a href="#阿里云域名-Cloudflare-解析（绑定域名）" class="headerlink" title="阿里云域名 + Cloudflare 解析（绑定域名）"></a>阿里云域名 + Cloudflare 解析（绑定域名）</h2>
+<ol>
+<li>打开 Cloudflare → R2 → 选择你的桶 → 点设置</li>
+<li>找到R2.dev 子域 → 开启允许访问（会生成类似<a class="link"   target="_blank" rel="noopener" href="https://xxx.r2.cloudflarestorage.com的地址)/" >https://xxx.r2.cloudflarestorage.com的地址）<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li>配置CORS 策略（不然博客访问图片会跨域报错）：<br>拉到CORS Policy → 点编辑<br>粘贴以下 JSON（把<a class="link"   target="_blank" rel="noopener" href="https://xxx.xxx.workers.dev换成你的/" >https://xxx.xxx.workers.dev换成你的<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> Workers 地址）：</li>
+</ol>
+<div class="code-container" data-rel="Json"><figure class="iseeu highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">[</span></span><br><span class="line">  <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;AllowedOrigins&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;https://xxx.xxx.workers.dev&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;AllowedMethods&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;GET&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;AllowedHeaders&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;*&quot;</span><span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure></div>
+<p>点保存</p>
+<h2 id="阿里云域名-Cloudflare-解析（绑定域名）"><a href="#阿里云域名-Cloudflare-解析（绑定域名）" class="headerlink" title="阿里云域名 + Cloudflare 解析（绑定域名）"></a>阿里云域名 + Cloudflare 解析（绑定域名）</h2><ol>
+<li>把阿里云域名托管到 Cloudflare</li>
+</ol>
+<ul>
+<li>打开 Cloudflare → 点添加站点 → 输入qwer1234.com → 选免费计划</li>
+<li>Cloudflare 会扫描现有 DNS 记录（不用改），点继续</li>
+<li>复制 Cloudflare 给的两个名称服务器（如xxx.ns.cloudflare.com）</li>
+<li>登录阿里云域名控制台 → 找到qwer1234.com → 点管理 → DNS 修改</li>
+<li>删除原来的 DNS，粘贴 Cloudflare 的两个名称服务器 → 保存</li>
+<li>等待生效（通常 10 分钟 - 48 小时，耐心等！）</li>
+</ul>
+<ol start="2">
+<li>配置域名解析</li>
+</ol>
+<ul>
+<li>回到 Cloudflare→网站→qwer1234.com→「DNS」→「记录」</li>
+<li>添加 1 条 CNAME 记录：</li>
+<li>| 类型 | 名称 | 内容 | 代理状态 |<br> -|——|——|——|———-|</li>
+<li>| CNAME | qwer1234.com | xxx.xxx.workers.dev | 仅 DNS（先关代理，生效后再开） |</li>
+<li>开启代理（橙色云朵），等待 5-10 分钟</li>
+<li>打开 GitHub 仓库→Settings→Pages→「Custom domain」输入 qwer1234.com，勾选「Enforce HTTPS」</li>
+</ul>
+<ol start="3">
+<li>绑定域名到 Workers 服务<br>进入左侧Workers和Pages，进你建的workers，然后点设置，自定义域，把你的域名加进去。</li>
+<li>最终验证<br>浏览器访问 https:&#x2F;&#x2F;你的域名，能看到博客页面，说明域名绑定成功。</li>
+</ol>
+<h1 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h1><p>选择的Hexo主题网址：<br><a class="link"   target="_blank" rel="noopener" href="https://pengtech.net/hexo/hexo_theme_recommendation.html" >https://pengtech.net/hexo/hexo_theme_recommendation.html<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://github.com/EvanNotFound/hexo-theme-redefine/blob/main/README_zh-CN.md" >https://github.com/EvanNotFound/hexo-theme-redefine/blob/main/README_zh-CN.md<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://redefine-docs.ohevan.com/zh" >https://redefine-docs.ohevan.com/zh<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a><br>演示：<br><a class="link"   target="_blank" rel="noopener" href="https://redefine.ohevan.com/" >https://redefine.ohevan.com<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p>Hexo新建文章：<br>在blog目录下</p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new “这是一篇新文章”</span><br></pre></td></tr></table></figure></div>
+<p>内容：</p>
+<div class="code-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 这是一篇新文章</span><br><span class="line">date: 2026-04-14</span><br><span class="line"><span class="section">categories: Pi   # 👈 这行决定文章出现在哪里</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"></span><br><span class="line">这里开始写正文！</span><br><span class="line">想写什么写什么～</span><br></pre></td></tr></table></figure></div>
+<p>用户头像来源：<br><a class="link"   target="_blank" rel="noopener" href="https://www.uisdc.com/group/581131.html" >https://www.uisdc.com/group/581131.html<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+
 		</div>
 
 		
@@ -659,7 +700,7 @@
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
 		<div class="page-title">“GitHub+Cloudflare+Hexo 个人网站搭建踩坑回顾”</div>
-		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E6%93%8D%E4%BD%9C"><span class="nav-text">开始操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%A6%E5%8F%B7%E5%87%86%E5%A4%87"><span class="nav-text">账号准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85%EF%BC%88Mac-Intel-%E8%8A%AF%E7%89%87%E4%B8%93%E7%94%A8%EF%BC%89"><span class="nav-text">工具安装（Mac Intel 芯片专用）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo-%E5%8D%9A%E5%AE%A2%E5%AE%89%E8%A3%85"><span class="nav-text">Hexo 博客安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub-%E4%BB%93%E5%BA%93%E9%85%8D%E7%BD%AE"><span class="nav-text">GitHub 仓库配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0-GitHub-Pages"><span class="nav-text">部署到 GitHub Pages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AA%92%E4%BD%93%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E4%BC%98%E5%8C%96"><span class="nav-text">媒体文件存储优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%BF%E9%87%8C%E4%BA%91%E5%9F%9F%E5%90%8D-Cloudflare-%E8%A7%A3%E6%9E%90%EF%BC%88%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D%EF%BC%89"><span class="nav-text">阿里云域名 + Cloudflare 解析（绑定域名）</span></a></li></ol></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E6%93%8D%E4%BD%9C"><span class="nav-text">开始操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%A6%E5%8F%B7%E5%87%86%E5%A4%87"><span class="nav-text">账号准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85%EF%BC%88Mac-Intel-%E8%8A%AF%E7%89%87%E4%B8%93%E7%94%A8%EF%BC%89"><span class="nav-text">工具安装（Mac Intel 芯片专用）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo-%E5%8D%9A%E5%AE%A2%E5%AE%89%E8%A3%85"><span class="nav-text">Hexo 博客安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub-%E4%BB%93%E5%BA%93%E9%85%8D%E7%BD%AE"><span class="nav-text">GitHub 仓库配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0-GitHub-Pages"><span class="nav-text">部署到 GitHub Pages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cloudflare-%E8%BF%9E%E6%8E%A5-Github"><span class="nav-text">Cloudflare 连接 Github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AA%92%E4%BD%93%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E4%BC%98%E5%8C%96"><span class="nav-text">媒体文件存储优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%BF%E9%87%8C%E4%BA%91%E5%9F%9F%E5%90%8D-Cloudflare-%E8%A7%A3%E6%9E%90%EF%BC%88%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D%EF%BC%89"><span class="nav-text">阿里云域名 + Cloudflare 解析（绑定域名）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E5%AE%83"><span class="nav-text">其它</span></a></li></ol>
 
 	</div>
 </div>
