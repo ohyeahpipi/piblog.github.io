@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    
+    <meta name="author" content="Pi Ruiyong">
+    
+    <!-- Completely eliminate flash of wrong theme -->
+    <script>
+        (function() {
+            const THEME_KEY = "REDEFINE-THEME-STATUS";
+            const DARK = "dark", LIGHT = "light";
+            
+            // Get preferred theme
+            function getTheme() {
+                try {
+                    const saved = localStorage.getItem(THEME_KEY);
+                    if (saved) {
+                        const { isDark } = JSON.parse(saved);
+                        return isDark ? DARK : LIGHT;
+                    }
+                } catch (e) {}
+                
+                return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
+            }
+            
+            // Apply theme to document
+            function applyTheme(theme) {
+                const isDark = theme === DARK;
+                const root = document.documentElement;
+                
+                // Set classes for compatibility
+                root.classList.add(theme);
+                root.classList.remove(isDark ? LIGHT : DARK);
+                root.style.colorScheme = theme;
+            }
+            
+            // Initial application
+            const theme = getTheme();
+            applyTheme(theme);
+            
+            // Listen for system preference changes
+            matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
+                // Only update if using system preference (no localStorage entry)
+                if (!localStorage.getItem(THEME_KEY)) {
+                    applyTheme(matches ? DARK : LIGHT);
+                }
+            });
+            
+            // Set body classes ASAP (before DOMContentLoaded)
+            (function() {
+                const addBodyClass = () => {
+                    const b = document.body;
+                    if (!b) return false;
+                    b.classList.add(theme + "-mode");
+                    return true;
+                };
+
+                // Try immediately
+                if (addBodyClass()) return;
+
+                // Observe until body exists
+                const mo = new MutationObserver(() => {
+                    if (addBodyClass()) mo.disconnect();
+                });
+                mo.observe(document.documentElement, { childList: true, subtree: true });
+            })();
+        })();
+    </script>
+    
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://example.com/2026/04/22/“道德经拼音版”/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+        
+        <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="道德经拼音版">
+<meta property="og:url" content="http://example.com/2026/04/22/%E2%80%9C%E9%81%93%E5%BE%B7%E7%BB%8F%E6%8B%BC%E9%9F%B3%E7%89%88%E2%80%9D/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/redefine-og.webp">
+<meta property="article:published_time" content="2026-04-22T03:23:22.000Z">
+<meta property="article:modified_time" content="2026-04-22T03:46:16.228Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/redefine-og.webp">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/redefine-favicon.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-favicon.svg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/redefine-favicon.svg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            道德经拼音版 | 与你共度的朝暮
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"example.com","root":"/","language":"en"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":false,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"side_tools":{"gear_rotation":true,"auto_expand":false},"open_graph":{"enable":true,"image":"/images/redefine-og.webp","description":"Hexo Theme Redefine, Redefine Your Hexo Journey."},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"四季予你,岁岁年年","subtitle":{"text":["一起逛过的街✨","一起吃过的饭🍚","一起看过的晚霞🌇","岁岁年年，有你相伴💛"],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":[{"icon":"fa-brands fa-github","url":null},{"icon":"fa-brands fa-twitter","url":null},{"icon":"fa-solid fa-at","url":"you@example.com"},{"icon":"fa-brands fa-telegram","url":null},{"icon":"/images/custom-icon.svg","url":null}],"qrs":[{"icon":"fa-brands fa-weixin","qr":null},{"icon":"/images/custom-icon.svg","qr":null}]}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1","theme":{"light":"default","dark":"dark"}}},"version":"2.9.0","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"皮":{"path":"/categories/Pi/","icon":"fa-regular fa-star"},"李":{"path":"/categories/Li/","icon":"fa-regular fa-heart"},"银圆":{"path":"/categories/Yinyuan/","icon":"fa-regular fa-coins"},"相册":{"icon":"fa-solid fa-image","path":"/gallery/"},"Others":{"path":"/categories/Others/","icon":"fa-regular fa-box-open"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"cloud","masonry":{"batch_size":12,"initial_batch_size":24}},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":4},"tags":{"enable":true,"limit":4}},"footer":{"runtime":true,"icon":"<i class=\"fa-solid fa-heart fa-beat\" style=\"--fa-animation-duration: 0.5s; color: #f54545\"></i>","start":"2022/8/17 11:45:14","statistics":true,"customize":null,"icp":{"enable":false,"number":null,"url":null}},"footerStart":"2022/8/17 11:45:14","mermaid":{"style":{"light":"default","dark":"dark"}}};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.i18n = {"search":"Search...","toc":"On this page","prev":"Prev","next":"Next","prev_posts":"Prev posts","next_posts":"Next posts","page":"Page %d","recent_posts":"Recent Posts","share":"Share","powered_by":"POWERED BY %s","theme":"THEME","rss_feed":"RSS Feed","category":"Category","categories":"Categories","tag":"Tag","tags":"Tags","post":"Post","posts":"Posts","tagcloud":"Tag Cloud","comment":"Comment","comments":"Comments","home":"Home","archive":"Archive","archives":"Archives","top":"TOP","sticky":"Sticky","go-back-home":"Go Back Home","masonry_loading":"Loading photos...","image_viewer":"Image viewer","close":"Close","exif":{"title":"EXIF","cards":{"camera":"Camera","lens":"Lens","exposure":"Exposure","other":"Other"},"fields":{"make":"Brand","model":"Model","date_taken":"Date taken","lens_model":"Lens","focal_length":"Focal length","focus_mode":"Focus mode","shutter":"Shutter","aperture":"Aperture","iso":"ISO","exposure_program":"Exposure program","exposure_compensation":"Exposure compensation","metering_mode":"Metering mode","flash":"Flash","white_balance":"White balance","latitude":"Latitude","longitude":"Longitude","altitude":"Altitude"},"status":{"loading":"Loading...","no_exif":"No EXIF available","library_missing":"EXIF library not loaded","image_source_missing":"Image source unavailable","unavailable":"EXIF unavailable (blocked by CORS or missing metadata)","flag_unavailable":"EXIF unavailable"}},"about":"About","changelog":"Changelog","links":"Links","link":"Link","friends":"Friends","friend":"Friend","timeline":"Timeline","shuoshuo":"Shuoshuo","bookmarks":"Bookmarks","site_uv":"VISITOR COUNT","site_pv":"TOTAL PAGE VIEWS","read_more":"Read more","wordcount":"Words","min2read":"Mins","status":"Status","runtime":"Blog up for","days":"days","hours":"hrs","minutes":"Min","seconds":"Sec","optimized_by":"and Optimized by Evan","rights":"All Rights Reserved","site_posts":"%s posts in total","site_wordcount":"%s words in total","copyright":{"author":"Author","title":"Title","link":"Link","create_time":"Created at","update_time":"Updated at","license_title":"License","license_content":"This work is licensed under %s.","all_rights_reserved":"All Rights Reserved &#169; %s","public_domain":"This work is in the public domain."},"ago":{"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"},"create_time":"Created","update_time":"Updated","expired":"This post is written %s days ago, and the content may not be up to date."};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                与你共度的朝暮
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/categories/Pi/"
+                                        >
+                                    <i class="fa-regular fa-star fa-fw"></i>
+                                    皮
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/categories/Li/"
+                                        >
+                                    <i class="fa-regular fa-heart fa-fw"></i>
+                                    李
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/categories/Yinyuan/"
+                                        >
+                                    <i class="fa-regular fa-coins fa-fw"></i>
+                                    银圆
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/gallery/"
+                                        >
+                                    <i class="fa-solid fa-image fa-fw"></i>
+                                    相册
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/categories/Others/"
+                                        >
+                                    <i class="fa-regular fa-box-open fa-fw"></i>
+                                    OTHERS
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/categories/Pi/"
+                        >
+                            <span>
+                                皮
+                            </span>
+                            
+                                <i class="fa-regular fa-star fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/categories/Li/"
+                        >
+                            <span>
+                                李
+                            </span>
+                            
+                                <i class="fa-regular fa-heart fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/categories/Yinyuan/"
+                        >
+                            <span>
+                                银圆
+                            </span>
+                            
+                                <i class="fa-regular fa-coins fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/gallery/"
+                        >
+                            <span>
+                                相册
+                            </span>
+                            
+                                <i class="fa-solid fa-image fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/categories/Others/"
+                        >
+                            <span>
+                                OTHERS
+                            </span>
+                            
+                                <i class="fa-regular fa-box-open fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">5</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">4</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">8</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">道德经拼音版</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] shrink-0 rounded-medium border border-border-color p-px">
+				<img src="/images2/blog-avatar.webp">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">Pi Ruiyong</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv2</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2026-04-22 11:23:22</span>
+        <span class="mobile">2026-04-22 11:23:22</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2026-04-22 11:46:16</span>
+            <span class="mobile">2026-04-22 11:46:16</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/Pi/">Pi</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<h1 id="道德经拼音版"><a href="#道德经拼音版" class="headerlink" title="道德经拼音版"></a>道德经拼音版</h1><p>出自 <a class="link"   target="_blank" rel="noopener" href="https://guoxue.dadaojiayuan.com/daodejing/" >https://guoxue.dadaojiayuan.com/daodejing/<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<h2 id="✅第01章-天地之始"><a href="#✅第01章-天地之始" class="headerlink" title="✅第01章 天地之始"></a>✅第01章 天地之始</h2><p>道(dào)可(kě)道(dào)，非(fēi)常(cháng)道(dào)；名(míng)可(kě)名(míng)，非(fēi)常(cháng)名(míng)。<br>无(wú)名(míng)天(tiān)地(dì)之(zhī)始(shǐ)；有(yǒu)名(míng)万(wàn)物(wù)之(zhī)母(mǔ)。<br>故(gù)常(cháng)无(wú)欲(yù)，以(yǐ)观(guān)其(qí)妙(miào)；<br>常(cháng)有(yǒu)欲(yù)，以(yǐ)观(guān)其(qí)徼(jiào)。<br>此(cǐ)两(liǎng)者(zhě)同(tóng)出(chū)而(ér)异(yì)名(míng)，同(tóng)谓(wèi)之(zhī)玄(xuán)。玄(xuán)之(zhī)又(yòu)玄(xuán)，众(zhòng)妙(miào)之(zhī)门(mén)。</p>
+<h2 id="✅第02章-功成弗居"><a href="#✅第02章-功成弗居" class="headerlink" title="✅第02章 功成弗居"></a>✅第02章 功成弗居</h2><p>天(tiān)下(xià)皆(jiē)知(zhī)美(měi)之(zhī)为(wéi)美(měi)，斯(sī)恶(è)已(yǐ)；皆(jiē)知(zhī)善(shàn)之(zhī)为(wéi)善(shàn)，斯(sī)不(bú)善(shàn)已(yǐ)。<br>故(gù)有(yǒu)无(wú)相(xiāng)生(shēng)，难(nán)易(yì)相(xiāng)成(chéng)，长(cháng)短(duǎn)相(xiāng)较(jiào)，高(gāo)下(xià)相(xiāng)倾(qīng)，音(yīn)声(shēng)相(xiāng)和(hè)，前(qián)后(hòu)相(xiāng)随(suí)。<br>是(shì)以(yǐ)圣(shèng)人(rén)处(chǔ)无(wú)为(wéi)之(zhī)事(shì)，<br>行(xíng)不(bù)言(yán)之(zhī)教(jiào)，万(wàn)物(wù)作(zuò)焉(yān)而(ér)不(bù)辞(cí)，生(shēng)而(ér)不(bù)有(yǒu)，为(wéi)而(ér)不(bù)恃(shì)，<br>功(gōng)成(chéng)而(ér)弗(fú)居(jū)。<br>夫(fú)唯(wéi)弗(fú)居(jū)，是(shì)以(yǐ)不(bù)去(qù)。</p>
+<h2 id="✅第03章-圣人之治"><a href="#✅第03章-圣人之治" class="headerlink" title="✅第03章 圣人之治"></a>✅第03章 圣人之治</h2><p>不(bú)尚(shàng)贤(xián)，使(shǐ)民(mín)不(bù)争(zhēng)；不(bú)贵(guì)难(nán)得(dé)之(zhī)货(huò)，使(shǐ)民(mín)不(bù)为(wéi)盗(dào)；不(bú)见(xiàn)可(kě)欲(yù)，使(shǐ)民(mín)心(xīn)不(bù)乱(luàn)。<br>是(shì)以(yǐ)圣(shèng)人(rén)之(zhī)治(zhì)，虚(xū)其(qí)心(xīn)，实(shí)其(qí)腹(fù)，<br>弱(ruò)其(qí)志(zhì)，强(qiáng)其(qí)骨(gǔ)。<br>常(cháng)使(shǐ)民(mín)无(wú)知(zhī)无(wú)欲(yù)。<br>使(shǐ)夫(fú)智(zhì)者(zhě)不(bù)敢(gǎn)为(wéi)也(yě)。<br>为(wéi)无(wú)为(wéi)，则(zé)无(wú)不(bú)治(zhì)。</p>
+<h2 id="✅第04章-和光同尘"><a href="#✅第04章-和光同尘" class="headerlink" title="✅第04章 和光同尘"></a>✅第04章 和光同尘</h2><p>道(dào)冲(chōng)，而(ér)用(yòng)之(zhī)或(huò)不(bù)盈(yíng)。渊(yuān)兮(xī)似(sì)万(wàn)物(wù)之(zhī)宗(zōng)。挫(cuò)其(qí)锐(ruì)，解(jiě)其(qí)纷(fēn)，和(hé)其(qí)光(guāng)，同(tóng)其(qí)尘(chén)。湛(zhàn)兮(xī)似(sì)或(huò)存(cún)。吾(wú)不(bù)知(zhī)谁(shuí)之(zhī)子(zǐ)，象(xiàng)帝(dì)之(zhī)先(xiān)。</p>
+<h2 id="✅第05章-多言数穷"><a href="#✅第05章-多言数穷" class="headerlink" title="✅第05章 多言数穷"></a>✅第05章 多言数穷</h2><p>天(tiān)地(dì)不(bù)仁(rén)，以(yǐ)万(wàn)物(wù)为(wéi)刍(chú)狗(gǒu)；<br>圣(shèng)人(rén)不(bù)仁(rén)，以(yǐ)百(bǎi)姓(xìng)为(wéi)刍(chú)狗(gǒu)。<br>天(tiān)地(dì)之(zhī)间(jiān)，其(qí)犹(yóu)橐(tuó)籥(yuè)乎(hū)？虚(xū)而(ér)不(bù)屈(qū)，动(dòng)而(ér)愈(yù)出(chū)。<br>多(duō)言(yán)数(shuò)穷(qióng)，不(bù)如(rú)守(shǒu)中(zhōng)。</p>
+<h2 id="✅第06章-谷神不死"><a href="#✅第06章-谷神不死" class="headerlink" title="✅第06章 谷神不死"></a>✅第06章 谷神不死</h2><p>谷(gǔ)神(shén)不(bù)死(sǐ)，是(shì)谓(wèi)玄(xuán)牝(pìn)。玄(xuán)牝(pìn)之(zhī)门(mén)，是(shì)谓(wèi)天(tiān)地(dì)根(gēn)。绵(mián)绵(mián)若(ruò)存(cún)，用(yòng)之(zhī)不(bù)勤(qín)。</p>
+<h2 id="✅第07章-天长地久"><a href="#✅第07章-天长地久" class="headerlink" title="✅第07章 天长地久"></a>✅第07章 天长地久</h2><p>天(tiān)长(cháng)地(dì)久(jiǔ)。天(tiān)地(dì)所(suǒ)以(yǐ)能(néng)长(cháng)且(qiě)久(jiǔ)者(zhě)，以(yǐ)其(qí)不(bù)自(zì)生(shēng)，<br>故(gù)能(néng)长(cháng)生(shēng)。是(shì)以(yǐ)圣(shèng)人(rén)后(hòu)其(qí)身(shēn)而(ér)身(shēn)先(xiān)，外(wài)其(qí)身(shēn)而(ér)身(shēn)存(cún)。非(fēi)以(yǐ)其(qí)无(wú)私(sī)邪(yé)？故(gù)能(néng)成(chéng)其(qí)私(sī)。</p>
+<h2 id="✅第08章-上善若水"><a href="#✅第08章-上善若水" class="headerlink" title="✅第08章 上善若水"></a>✅第08章 上善若水</h2><p>上(shàng)善(shàn)若(ruò)水(shuǐ)。水(shuǐ)善(shàn)利(lì)万(wàn)物(wù)而(ér)不(bù)争(zhēng)，处(chǔ)众(zhòng)人(rén)之(zhī)所(suǒ)恶(wù)，故(gù)几(jī)于(yú)道(dào)。<br>居(jū)善(shàn)地(dì)，心(xīn)善(shàn)渊(yuān)，<br>与(yǔ)善(shàn)仁(rén)，言(yán)善(shàn)信(xìn)，<br>政(zhèng)善(shàn)治(zhì)，事(shì)善(shàn)能(néng)，<br>动(dòng)善(shàn)时(shí)。<br>夫(fú)唯(wéi)不(bù)争(zhēng)，故(gù)无(wú)尤(yóu)。</p>
+<h2 id="✅第09章-持而盈之"><a href="#✅第09章-持而盈之" class="headerlink" title="✅第09章 持而盈之"></a>✅第09章 持而盈之</h2><p>持(chí)而(ér)盈(yíng)之(zhī)，不(bù)如(rú)其(qí)已(yǐ)；<br>揣(zhuī)而(ér)锐(ruì)之(zhī)，不(bù)可(kě)长(cháng)保(bǎo)。<br>金(jīn)玉(yù)满(mǎn)堂(táng)，莫(mò)之(zhī)能(néng)守(shǒu)；<br>富(fù)贵(guì)而(ér)骄(jiāo)，自(zì)遗(yí)其(qí)咎(jiù)。<br>功(gōng)遂(suì)身(shēn)退(tuì)，天(tiān)之(zhī)道(dào)也(yě)。</p>
+<h2 id="✅第10章-明白四达"><a href="#✅第10章-明白四达" class="headerlink" title="✅第10章 明白四达"></a>✅第10章 明白四达</h2><p>载(zǎi)营(yíng)魄(pò)抱(bào)一(yī)，能(néng)无(wú)离(lí)乎(hū)？<br>专(zhuān)气(qì)致(zhì)柔(róu)，能(néng)如(rú)婴(yīng)儿(ér)乎(hū)？<br>涤(dí)除(chú)玄(xuán)鉴(jiàn)，能(néng)无(wú)疵(cī)乎(hū)？<br>爱(ài)民(mín)治(zhì)国(guó)，能(néng)无(wú)为(wéi)乎(hū)？<br>天(tiān)门(mén)开(kāi)阖(hé)，能(néng)为(wéi)雌(cí)乎(hū)？<br>明(míng)白(bái)四(sì)达(dá)，能(néng)无(wú)知(zhì)乎(hū)？<br>生(shēng)之(zhī)、<br>畜(xù)之(zhī)，生(shēng)而(ér)不(bù)有(yǒu)，为(wéi)而(ér)不(bù)恃(shì)，长(zhǎng)而(ér)不(bù)宰(zǎi)，是(shì)谓(wèi)玄(xuán)德(dé)。</p>
+<h2 id="✅第11章-无之为用"><a href="#✅第11章-无之为用" class="headerlink" title="✅第11章 无之为用"></a>✅第11章 无之为用</h2><p>三(sān)十(shí)辐(fú)共(gòng)一(yī)毂(gǔ)，当(dāng)其(qí)无(wú)，有(yǒu)车(chē)之(zhī)用(yòng)。<br>埏(shān)埴(zhí)以(yǐ)为(wéi)器(qì)，当(dāng)其(qí)无(wú)，有(yǒu)器(qì)之(zhī)用(yòng)。凿(záo)户(hù)牖(yǒu)以(yǐ)为(wéi)室(shì)，当(dāng)其(qí)无(wú)，有(yǒu)室(shì)之(zhī)用(yòng)。故(gù)有(yǒu)之(zhī)以(yǐ)为(wéi)利(lì)，无(wú)之(zhī)以(yǐ)为(wéi)用(yòng)。</p>
+<h2 id="✅第12章-去彼取此"><a href="#✅第12章-去彼取此" class="headerlink" title="✅第12章 去彼取此"></a>✅第12章 去彼取此</h2><p>五(wǔ)色(sè)令(lìng)人(rén)目(mù)盲(máng)；五(wǔ)音(yīn)令(lìng)人(rén)耳(ěr)聋(lóng)；五(wǔ)味(wèi)令(lìng)人(rén)口(kǒu)爽(shuǎng)；驰(chí)骋(chěng)畋(tián)猎(liè)，令(lìng)人(rén)心(xīn)发(fā)狂(kuáng)；<br>难(nán)得(dé)之(zhī)货(huò)，令(lìng)人(rén)行(xíng)妨(fáng)。<br>是(shì)以(yǐ)圣(shèng)人(rén)为(wéi)腹(fù)不(bù)为(wéi)目(mù)，故(gù)去(qù)彼(bǐ)取(qǔ)此(cǐ)。</p>
+<h2 id="✅第13章-宠辱不惊"><a href="#✅第13章-宠辱不惊" class="headerlink" title="✅第13章 宠辱不惊"></a>✅第13章 宠辱不惊</h2><p>宠(chǒng)辱(rǔ)若(ruò)惊(jīng)，贵(guì)大(dà)患(huàn)若(ruò)身(shēn)。何(hé)谓(wèi)宠(chǒng)辱(rǔ)若(ruò)惊(jīng)？宠(chǒng)为(wéi)下(xià)，得(dé)之(zhī)若(ruò)惊(jīng)，失(shī)之(zhī)若(ruò)惊(jīng)，是(shì)谓(wèi)宠(chǒng)辱(rǔ)若(ruò)惊(jīng)。<br>何(hé)谓(wèi)贵(guì)大(dà)患(huàn)若(ruò)身(shēn)？<br>吾(wú)所(suǒ)以(yǐ)有(yǒu)大(dà)患(huàn)者(zhě)，为(wéi)吾(wú)有(yǒu)身(shēn)，<br>及(jí)吾(wú)无(wú)身(shēn)，<br>吾(wú)有(yǒu)何(hé)患(huàn)？故(gù)贵(guì)以(yǐ)身(shēn)为(wéi)天(tiān)下(xià)，若(ruò)可(kě)寄(jì)天(tiān)下(xià)；<br>爱(ài)以(yǐ)身(shēn)为(wéi)天(tiān)下(xià)，若(ruò)可(kě)托(tuō)天(tiān)下(xià)。</p>
+<h2 id="✅第14章-执古之道"><a href="#✅第14章-执古之道" class="headerlink" title="✅第14章 执古之道"></a>✅第14章 执古之道</h2><p>视(shì)之(zhī)不(bù)见(jiàn)名(míng)曰(yuē)夷(yí)；听(tīng)之(zhī)不(bù)闻(wén)名(míng)曰(yuē)希(xī)；搏(bó)之(zhī)不(bù)得(dé)名(míng)曰(yuē)微(wēi)。此(cǐ)三(sān)者(zhě)，不(bù)可(kě)致(zhì)诘(jié)，故(gù)混(hùn)而(ér)为(wéi)一(yī)。<br>其(qí)上(shàng)不(bù)皦(jiǎo)，其(qí)下(xià)不(bú)昧(mèi)。绳(mǐn)绳(mǐn)兮(xī)不(bù)可(kě)名(míng)，复(fù)归(guī)于(yú)无(wú)物(wù)。<br>是(shì)谓(wèi)无(wú)状(zhuàng)之(zhī)状(zhuàng)，无(wú)物(wù)之(zhī)象(xiàng)，<br>是(shì)谓(wèi)惚(hū)恍(huǎng)。<br>迎(yíng)之(zhī)不(bù)见(jiàn)其(qí)首(shǒu)，随(suí)之(zhī)不(bù)见(jiàn)其(qí)后(hòu)。<br>执(zhí)古(gǔ)之(zhī)道(dào)，以(yǐ)御(yù)今(jīn)之(zhī)有(yǒu)。<br>能(néng)知(zhī)古(gǔ)始(shǐ)，是(shì)谓(wèi)道(dào)纪(jì)。</p>
+<h2 id="✅第15章-微妙玄通"><a href="#✅第15章-微妙玄通" class="headerlink" title="✅第15章 微妙玄通"></a>✅第15章 微妙玄通</h2><p>古(gǔ)之(zhī)善(shàn)为(wéi)道(dào)者(zhě)，微(wēi)妙(miào)玄(xuán)通(tōng)，深(shēn)不(bù)可(kě)识(shí)。夫(fú)唯(wéi)不(bù)可(kě)识(shí)，故(gù)强(qiǎng)为(wéi)之(zhī)容(róng)。豫(yù)焉(yān)若(ruò)冬(dōng)涉(shè)川(chuān)；<br>犹(yóu)兮(xī)若(ruò)畏(wèi)四(sì)邻(lín)；俨(yǎn)兮(xī)其(qí)若(ruò)容(róng)；涣(huàn)兮(xī)若(ruò)冰(bīng)之(zhī)将(jiāng)释(shì)；敦(dūn)兮(xī)其(qí)若(ruò)朴(pǔ)；旷(kuàng)兮(xī)其(qí)若(ruò)谷(gǔ)；混(hún)兮(xī)其(qí)若(ruò)浊(zhuó)；<br>孰(shú)能(néng)浊(zhuó)以(yǐ)静(jìng)之(zhī)徐(xú)清(qīng)？孰(shú)能(néng)安(ān)以(yǐ)久(jiǔ)动(dòng)之(zhī)徐(xú)生(shēng)？<br>保(bǎo)此(cǐ)道(dào)者(zhě)不(bù)欲(yù)盈(yíng)。<br>夫(fú)唯(wéi)不(bù)盈(yíng)，故(gù)能(néng)蔽(bì)而(ér)新(xīn)成(chéng)。</p>
+<h2 id="✅第16章-致虚守静"><a href="#✅第16章-致虚守静" class="headerlink" title="✅第16章 致虚守静"></a>✅第16章 致虚守静</h2><p>致(zhì)虚(xū)极(jí)，守(shǒu)静(jìng)笃(dǔ)。<br>万(wàn)物(wù)并(bìng)作(zuò)，<br>吾(wú)以(yǐ)观(guān)其(qí)复(fù)。<br>夫(fú)物(wù)芸(yún)芸(yún)，各(gè)复(fù)归(guī)其(qí)根(gēn)。<br>归(guī)根(gēn)曰(yuē)静(jìng)，静(jìng)曰(yuē)复(fù)命(mìng)。复(fù)命(mìng)曰(yuē)常(cháng)，<br>知(zhī)常(cháng)曰(yuē)明(míng)。不(bù)知(zhī)常(cháng)，妄(wàng)作(zuò),凶(xiōng)。<br>知(zhī)常(cháng)容(róng)，<br>容(róng)乃(nǎi)公(gōng)，<br>公(gōng)乃(nǎi)全(quán)，<br>全(quán)乃(nǎi)天(tiān)，<br>天(tiān)乃(nǎi)道(dào)，<br>道(dào)乃(nǎi)久(jiǔ)，<br>没(mò)身(shēn)不(bú)殆(dài)。</p>
+<h2 id="✅第17章-功成事遂"><a href="#✅第17章-功成事遂" class="headerlink" title="✅第17章 功成事遂"></a>✅第17章 功成事遂</h2><p>太(tài)上(shàng)，下(xià)知(zhī)有(yǒu)之(zhī)；<br>其(qí)次(cì)，亲(qīn)而(ér)誉(yù)之(zhī)；<br>其(qí)次(cì)，畏(wèi)之(zhī)；<br>其(qí)次(cì)，侮(wǔ)之(zhī)。<br>信(xìn)不(bù)足(zú)焉(yān),有(yǒu)不(bù)信(xìn)焉(yān)。<br>悠(yōu)兮(xī)其(qí)贵(guì)言(yán)。<br>功(gōng)成(chéng)事(shì)遂(suì)，百(bǎi)姓(xìng)皆(jiē)谓(wèi)我(wǒ)自(zì)然(rán)。</p>
+<h2 id="✅第18章-大仁大义"><a href="#✅第18章-大仁大义" class="headerlink" title="✅第18章 大仁大义"></a>✅第18章 大仁大义</h2><p>大(dà)道(dào)废(fèi)，有(yǒu)仁(rén)义(yì)；<br>慧(huì)智(zhì)出(chū)，有(yǒu)大(dà)伪(wěi)；<br>六(liù)亲(qīn)不(bù)和(hé)，有(yǒu)孝(xiào)慈(cí)；<br>国(guó)家(jiā)昏(hūn)乱(luàn)，有(yǒu)忠(zhōng)臣(chén)。</p>
+<h2 id="✅第19章-少私寡欲"><a href="#✅第19章-少私寡欲" class="headerlink" title="✅第19章 少私寡欲"></a>✅第19章 少私寡欲</h2><p>绝(jué)圣(shèng)弃(qì)智(zhì)，民(mín)利(lì)百(bǎi)倍(bèi)；<br>绝(jué)仁(rén)弃(qì)义(yì)，民(mín)复(fù)孝(xiào)慈(cí)；<br>绝(jué)巧(qiǎo)弃(qì)利(lì)，盗(dào)贼(zéi)无(wú)有(yǒu)。<br>此(cǐ)三(sān)者(zhě)，以(yǐ)为(wéi)文(wén)不(bù)足(zú)。<br>故(gù)令(lìng)有(yǒu)所(suǒ)属(shǔ)：<br>见(xiàn)素(sù)抱(bào)朴(pǔ)，少(shǎo)私(sī)寡(guǎ)欲(yù)。</p>
+<h2 id="✅第20章-独异于人"><a href="#✅第20章-独异于人" class="headerlink" title="✅第20章 独异于人"></a>✅第20章 独异于人</h2><p>绝(jué)学(xué)无(wú)忧(yōu)。唯(wéi)之(zhī)与(yǔ)阿(ē)，相(xiāng)去(qù)几(jǐ)何(hé)？善(shàn)之(zhī)与(yǔ)恶(è)，相(xiāng)去(qù)若(ruò)何(hé)？<br>人(rén)之(zhī)所(suǒ)畏(wèi)，不(bù)可(kě)不(bù)畏(wèi)。<br>荒(huāng)兮(xī)，其(qí)未(wèi)央(yāng)哉(zāi)！<br>众(zhòng)人(rén)熙(xī)熙(xī)，如(rú)享(xiǎng)太(tài)牢(láo)，如(rú)春(chūn)登(dēng)台(tái)。<br>我(wǒ)独(dú)泊(bó)兮(xī)其(qí)未(wèi)兆(zhào),如(rú)婴(yīng)儿(ér)之(zhī)未(wèi)孩(hái)；<br>儽(léi)儽(léi)兮(xī)若(ruò)无(wú)所(suǒ)归(guī)。<br>众(zhòng)人(rén)皆(jiē)有(yǒu)余(yú)，而(ér)我(wǒ)独(dú)若(ruò)遗(yí)。<br>我(wǒ)愚(yú)人(rén)之(zhī)心(xīn)也(yě)哉(zāi)！<br>沌(dùn)沌(dùn)兮(xī)，<br>俗(sú)人(rén)昭(zhāo)昭(zhāo)，<br>我(wǒ)独(dú)昏(hūn)昏(hūn)。俗(sú)人(rén)察(chá)察(chá)，<br>我(wǒ)独(dú)闷(mèn)闷(mèn)。<br>淡(dàn)兮(xī)其(qí)若(ruò)海(hǎi)，<br>飂(liǎo)兮(xī)若(ruò)无(wú)止(zhǐ)。<br>众(zhòng)人(rén)皆(jiē)有(yǒu)以(yǐ)，<br>而(ér)我(wǒ)独(dú)顽(wán)且(qiě)鄙(bǐ)。<br>我(wǒ)独(dú)异(yì)于(yú)人(rén)，而(ér)贵(guì)食(shí)母(mǔ)。</p>
+<h2 id="✅第21章-孔德之容"><a href="#✅第21章-孔德之容" class="headerlink" title="✅第21章 孔德之容"></a>✅第21章 孔德之容</h2><p>孔(kǒng)德(dé)之(zhī)容(róng)，惟(wéi)道(dào)是(shì)从(cóng)。<br>道(dào)之(zhī)为(wéi)物(wù)，惟(wéi)恍(huǎng)惟(wéi)惚(hū)。<br>惚(hū)兮(xī)恍(huǎng)兮(xī)，其(qí)中(zhōng)有(yǒu)象(xiàng)；恍(huǎng)兮(xī)惚(hū)兮(xī)，其(qí)中(zhōng)有(yǒu)物(wù)。<br>窈(yǎo)兮(xī)冥(míng)兮(xī)，其(qí)中(zhōng)有(yǒu)精(jīng)；<br>其(qí)精(jīng)甚(shèn)真(zhēn)，其(qí)中(zhōng)有(yǒu)信(xìn)。<br>自(zì)今(jīn)及(jí)古(gǔ)，其(qí)名(míng)不(bú)去(qù)，<br>以(yǐ)阅(yuè)众(zhòng)甫(fǔ)。<br>吾(wú)何(hé)以(yǐ)知(zhī)众(zhòng)甫(fǔ)之(zhī)状(zhuàng)哉(zāi)？以(yǐ)此(cǐ)。</p>
+<h2 id="✅第22章-圣人抱一"><a href="#✅第22章-圣人抱一" class="headerlink" title="✅第22章 圣人抱一"></a>✅第22章 圣人抱一</h2><p>曲(qū)则(zé)全(quán)，<br>枉(wǎng)则(zé)直(zhí)，<br>洼(wā)则(zé)盈(yíng)，<br>敝(bì)则(zé)新(xīn)，<br>少(shǎo)则(zé)得(dé)，多(duō)则(zé)惑(huò)。<br>是(shì)以(yǐ)圣(shèng)人(rén)抱(bào)一(yī)为(wéi)天(tiān)下(xià)式(shì)。<br>不(bù)自(zì)见(jiàn)故(gù)明(míng)；<br>不(bù)自(zì)是(shì)故(gù)彰(zhāng)；<br>不(bù)自(zì)伐(fá)故(gù)有(yǒu)功(gōng)；<br>不(bù)自(zì)矜(jīn)故(gù)长(zhǎng)。<br>夫(fú)唯(wéi)不(bù)争(zhēng)故(gù)天(tiān)下(xià)莫(mò)能(néng)与(yǔ)之(zhī)争(zhēng)。<br>古(gǔ)之(zhī)所(suǒ)谓(wèi)曲(qū)则(zé)全(quán)者(zhě)，岂(qǐ)虚(xū)言(yán)哉(zāi)！<br>诚(chéng)全(quán)而(ér)归(guī)之(zhī)。</p>
+<h2 id="第23章-希言自然"><a href="#第23章-希言自然" class="headerlink" title="第23章 希言自然"></a>第23章 希言自然</h2><p>希(xī)言(yán)自(zì)然(rán)。<br>故(gù)飘(piāo)风(fēng)不(bù)终(zhōng)朝(zhāo)，骤(zhòu)雨(yǔ)不(bù)终(zhōng)日(rì)。孰(shú)为(wéi)此(cǐ)者(zhě)？天(tiān)地(dì)。天(tiān)地(dì)尚(shàng)不(bù)能(néng)久(jiǔ)，而(ér)况(kuàng)于(yú)人(rén)乎(hū)？<br>故(gù)从(cóng)事(shì)于(yú)道(dào)者(zhě)，道(dào)者(zhě)同(tóng)于(yú)道(dào)；<br>德(dé)者(zhě)同(tóng)于(yú)德(dé)；失(shī)者(zhě)同(tóng)于(yú)失(shī)。<br>同(tóng)于(yú)道(dào)者(zhě)，道(dào)亦(yì)乐(lè)得(dé)之(zhī)；<br>同(tóng)于(yú)德(dé)者(zhě)，德(dé)亦(yì)乐(lè)得(dé)之(zhī)；<br>同(tóng)于(yú)失(shī)者(zhě)，失(shī)亦(yì)乐(lè)得(dé)之(zhī)。<br>信(xìn)不(bù)足(zú)焉(yān)，有(yǒu)不(bù)信(xìn)焉(yān)。</p>
+<h2 id="第24章-物或恶之"><a href="#第24章-物或恶之" class="headerlink" title="第24章 物或恶之"></a>第24章 物或恶之</h2><p>企(qǐ)者(zhě)不(bù)立(lì)；跨(kuà)者(zhě)不(bù)行(xíng)；<br>自(zì)见(jiàn)者(zhě)不(bù)明(míng)；自(zì)是(shì)者(zhě)不(bù)彰(zhāng)；<br>自(zì)伐(fá)者(zhě)无(wú)功(gōng)；自(zì)矜(jīn)者(zhě)不(bù)长(zhǎng)。<br>其(qí)在(zài)道(dào)也(yě)，曰(yuē)：余(yú)食(shí)赘(zhuì)形(xíng)。<br>物(wù)或(huò)恶(è)之(zhī)，故(gù)有(yǒu)道(dào)者(zhě)不(bù)处(chǔ)。</p>
+<h2 id="第25章-道法自然"><a href="#第25章-道法自然" class="headerlink" title="第25章 道法自然"></a>第25章 道法自然</h2><p>有(yǒu)物(wù)混(hùn)成(chéng)，先(xiān)天(tiān)地(dì)生(shēng)。<br>寂(jì)兮(xī)寥(liáo)兮(xī)，独(dú)立(lì)而(ér)不(bù)改(gǎi)，周(zhōu)行(xíng)而(ér)不(bù)殆(dài)，可(kě)以(yǐ)为(wéi)天(tiān)地(dì)母(mǔ)。<br>吾(wú)不(bù)知(zhī)其(qí)名(míng)，字(zì)之(zhī)曰(yuē)道(dào)，强(qiǎng)为(wéi)之(zhī)名(míng)曰(yuē)大(dà)。<br>大(dà)曰(yuē)逝(shì)，逝(shì)曰(yuē)远(yuǎn)，远(yuǎn)曰(yuē)反(fǎn)。<br>故(gù)道(dào)大(dà)，天(tiān)大(dà)，地(dì)大(dà)，王(wáng)亦(yì)大(dà)。<br>域(yù)中(zhōng)有(yǒu)四(sì)大(dà)，而(ér)王(wáng)居(jū)其(qí)一(yī)焉(yān)。<br>人(rén)法(fǎ)地(dì)，地(dì)法(fǎ)天(tiān)，天(tiān)法(fǎ)道(dào)，道(dào)法(fǎ)自(zì)然(rán)。</p>
+<h2 id="第26章-宜戒轻躁"><a href="#第26章-宜戒轻躁" class="headerlink" title="第26章 宜戒轻躁"></a>第26章 宜戒轻躁</h2><p>重(zhòng)为(wéi)轻(qīng)根(gēn)，静(jìng)为(wéi)躁(zào)君(jūn)。<br>是(shì)以(yǐ)君(jūn)子(zǐ)终(zhōng)日(rì)行(xíng)不(bù)离(lí)辎(zī)重(zhòng)。<br>虽(suī)有(yǒu)荣(róng)观(guān)，燕(yàn)处(chǔ)超(chāo)然(rán)。<br>奈(nài)何(hé)万(wàn)乘(shèng)之(zhī)主(zhǔ)，而(ér)以(yǐ)身(shēn)轻(qīng)天(tiān)下(xià)？<br>轻(qīng)则(zé)失(shī)本(běn)，躁(zào)则(zé)失(shī)君(jūn)。</p>
+<h2 id="第27章-常善救人"><a href="#第27章-常善救人" class="headerlink" title="第27章 常善救人"></a>第27章 常善救人</h2><p>善(shàn)行(xíng)无(wú)辙(zhé)迹(jì)；善(shàn)言(yán)无(wú)瑕(xiá)谪(zhé)；<br>善(shàn)数(shǔ)不(bù)用(yòng)筹(chóu)策(cè)；<br>善(shàn)闭(bì)无(wú)关(guān)楗(jiàn)而(ér)不(bù)可(kě)开(kāi)；<br>善(shàn)结(jié)无(wú)绳(shéng)约(yuē)而(ér)不(bù)可(kě)解(jiě)。<br>是(shì)以(yǐ)圣(shèng)人(rén)常(cháng)善(shàn)救(jiù)人(rén)，故(gù)无(wú)弃(qì)人(rén)；<br>常(cháng)善(shàn)救(jiù)物(wù)，故(gù)无(wú)弃(qì)物(wù)。<br>是(shì)谓(wèi)袭(xí)明(míng)。<br>故(gù)善(shàn)人(rén)者(zhě)，不(bù)善(shàn)人(rén)之(zhī)师(shī)；<br>不(bù)善(shàn)人(rén)者(zhě)，善(shàn)人(rén)之(zhī)资(zī)。<br>不(bù)贵(guì)其(qí)师(shī)，不(bù)爱(ài)其(qí)资(zī)，<br>虽(suī)智(zhì)大(dà)迷(mí)，是(shì)谓(wèi)要(yào)妙(miào)。</p>
+<h2 id="第28章-常德乃足"><a href="#第28章-常德乃足" class="headerlink" title="第28章 常德乃足"></a>第28章 常德乃足</h2><p>知(zhī)其(qí)雄(xióng)，守(shǒu)其(qí)雌(cí)，为(wéi)天(tiān)下(xià)溪(xī)。<br>为(wéi)天(tiān)下(xià)溪(xī)，常(cháng)德(dé)不(bù)离(lí)，复(fù)归(guī)于(yú)婴(yīng)儿(ér)。<br>知(zhī)其(qí)白(bái)，守(shǒu)其(qí)黑(hēi)，为(wéi)天(tiān)下(xià)式(shì)。<br>为(wéi)天(tiān)下(xià)式(shì)，常(cháng)德(dé)不(bù)忒(tè)，复(fù)归(guī)于(yú)无(wú)极(jí)。<br>知(zhī)其(qí)荣(róng)，守(shǒu)其(qí)辱(rǔ)，为(wéi)天(tiān)下(xià)谷(gǔ)。<br>为(wéi)天(tiān)下(xià)谷(gǔ)，常(cháng)德(dé)乃(nǎi)足(zú)，复(fù)归(guī)于(yú)朴(pǔ)。<br>朴(pǔ)散(sàn)则(zé)为(wéi)器(qì)，圣(shèng)人(rén)用(yòng)之(zhī)，则(zé)为(wéi)官(guān)长(zhǎng)，<br>故(gù)大(dà)制(zhì)不(bù)割(gē)。</p>
+<h2 id="第29章-去奢去泰"><a href="#第29章-去奢去泰" class="headerlink" title="第29章 去奢去泰"></a>第29章 去奢去泰</h2><p>将(jiāng)欲(yù)取(qǔ)天(tiān)下(xià)而(ér)为(wéi)之(zhī)，吾(wú)见(jiàn)其(qí)不(bù)得(dé)已(yǐ)。<br>天(tiān)下(xià)神(shén)器(qì)，不(bù)可(kě)为(wéi)也(yě)，不(bù)可(kě)执(zhí)也(yě)。<br>为(wéi)者(zhě)败(bài)之(zhī)，执(zhí)者(zhě)失(shī)之(zhī)。<br>故(gù)物(wù)或(huò)行(xíng)或(huò)随(suí)；或(huò)歔(xū)或(huò)吹(chuī)；<br>或(huò)强(qiáng)或(huò)羸(léi)；或(huò)载(zǎi)或(huò)隳(huī)。<br>是(shì)以(yǐ)圣(shèng)人(rén)去(qù)甚(shèn)，去(qù)奢(shē)，去(qù)泰(tài)。</p>
+<h2 id="第30章-不以兵强"><a href="#第30章-不以兵强" class="headerlink" title="第30章 不以兵强"></a>第30章 不以兵强</h2><p>以(yǐ)道(dào)佐(zuǒ)人(rén)主(zhǔ)者(zhě)，不(bù)以(yǐ)兵(bīng)强(qiáng)天(tiān)下(xià)。<br>其(qí)事(shì)好(hǎo)还(huán)。<br>师(shī)之(zhī)所(suǒ)处(chǔ)，荆(jīng)棘(jí)生(shēng)焉(yān)。<br>大(dà)军(jūn)之(zhī)后(hòu)，必(bì)有(yǒu)凶(xiōng)年(nián)。<br>善(shàn)有(yǒu)果(guǒ)而(ér)已(yǐ)，不(bù)以(yǐ)取(qǔ)强(qiáng)。<br>果(guǒ)而(ér)勿(wù)矜(jīn)，果(guǒ)而(ér)勿(wù)伐(fá)，果(guǒ)而(ér)勿(wù)骄(jiāo)，<br>果(guǒ)而(ér)不(bù)得(dé)已(yǐ)，果(guǒ)而(ér)勿(wù)强(qiáng)。<br>物(wù)壮(zhuàng)则(zé)老(lǎo)，是(shì)谓(wèi)不(bù)道(dào)，不(bù)道(dào)早(zǎo)已(yǐ)。</p>
+<h2 id="第31章-恬淡为上"><a href="#第31章-恬淡为上" class="headerlink" title="第31章 恬淡为上"></a>第31章 恬淡为上</h2><p>夫(fú)兵(bīng)者(zhě)，不(bù)祥(xiáng)之(zhī)器(qì)，<br>物(wù)或(huò)恶(è)之(zhī)，故(gù)有(yǒu)道(dào)者(zhě)不(bù)处(chǔ)。<br>君(jūn)子(zǐ)居(jū)则(zé)贵(guì)左(zuǒ)，用(yòng)兵(bīng)则(zé)贵(guì)右(yòu)。<br>兵(bīng)者(zhě)不(bù)祥(xiáng)之(zhī)器(qì)，非(fēi)君(jūn)子(zǐ)之(zhī)器(qì)，<br>不(bù)得(dé)已(yǐ)而(ér)用(yòng)之(zhī)，恬(tián)淡(dàn)为(wéi)上(shàng)。<br>胜(shèng)而(ér)不(bù)美(měi)，而(ér)美(měi)之(zhī)者(zhě)，是(shì)乐(lè)杀(shā)人(rén)。<br>夫(fú)乐(lè)杀(shā)人(rén)者(zhě)，则(zé)不(bù)可(kě)得(dé)志(zhì)于(yú)天(tiān)下(xià)矣(yǐ)。<br>吉(jí)事(shì)尚(shàng)左(zuǒ)，凶(xiōng)事(shì)尚(shàng)右(yòu)。<br>偏(piān)将(jiàng)军(jūn)居(jū)左(zuǒ)，上(shàng)将(jiàng)军(jūn)居(jū)右(yòu)，<br>言(yán)以(yǐ)丧(sāng)礼(lǐ)处(chǔ)之(zhī)。<br>杀(shā)人(rén)之(zhī)众(zhòng)，以(yǐ)悲(bēi)哀(āi)泣(qì)之(zhī)；<br>战(zhàn)胜(shèng)，以(yǐ)丧(sāng)礼(lǐ)处(chǔ)之(zhī)。</p>
+<h2 id="第32章-知止不殆"><a href="#第32章-知止不殆" class="headerlink" title="第32章 知止不殆"></a>第32章 知止不殆</h2><p>道(dào)常(cháng)无(wú)名(míng)、朴(pǔ)。<br>虽(suī)小(xiǎo)，天(tiān)下(xià)莫(mò)能(néng)臣(chén)也(yě)。<br>侯(hóu)王(wáng)若(ruò)能(néng)守(shǒu)之(zhī)，万(wàn)物(wù)将(jiāng)自(zì)宾(bīn)。<br>天(tiān)地(dì)相(xiāng)合(hé)，以(yǐ)降(jiàng)甘(gān)露(lù)，<br>民(mín)莫(mò)之(zhī)令(lìng)而(ér)自(zì)均(jūn)。<br>始(shǐ)制(zhì)有(yǒu)名(míng)，名(míng)亦(yì)既(jì)有(yǒu)，<br>夫(fú)亦(yì)将(jiāng)知(zhī)止(zhǐ)，知(zhī)止(zhǐ)可(kě)以(yǐ)不(bù)殆(dài)。<br>譬(pì)道(dào)之(zhī)在(zài)天(tiān)下(xià)，犹(yóu)川(chuān)谷(gǔ)之(zhī)于(yú)江(jiāng)海(hǎi)。</p>
+<h2 id="第33章-自知者明"><a href="#第33章-自知者明" class="headerlink" title="第33章 自知者明"></a>第33章 自知者明</h2><p>知(zhī)人(rén)者(zhě)智(zhì)，自(zì)知(zhī)者(zhě)明(míng)。<br>胜(shèng)人(rén)者(zhě)有(yǒu)力(lì)，自(zì)胜(shèng)者(zhě)强(qiáng)。<br>知(zhī)足(zú)者(zhě)富(fù)。<br>强(qiǎng)行(xíng)者(zhě)有(yǒu)志(zhì)。<br>不(bù)失(shī)其(qí)所(suǒ)者(zhě)久(jiǔ)。<br>死(sǐ)而(ér)不(bù)亡(wáng)者(zhě)寿(shòu)。</p>
+<h2 id="第34章-不自为大"><a href="#第34章-不自为大" class="headerlink" title="第34章 不自为大"></a>第34章 不自为大</h2><p>大(dà)道(dào)泛(fàn)兮(xī)，其(qí)可(kě)左(zuǒ)右(yòu)。<br>万(wàn)物(wù)恃(shì)之(zhī)以(yǐ)生(shēng)而(ér)不(bù)辞(cí)，<br>功(gōng)成(chéng)而(ér)不(bù)名(míng)有(yǒu)。<br>衣(yì)养(yǎng)万(wàn)物(wù)而(ér)不(bù)为(wéi)主(zhǔ)，<br>常(cháng)无(wú)欲(yù)，可(kě)名(míng)于(yú)小(xiǎo)。<br>万(wàn)物(wù)归(guī)焉(yān)而(ér)不(bù)为(wéi)主(zhǔ)，可(kě)名(míng)于(yú)大(dà)。<br>以(yǐ)其(qí)终(zhōng)不(bù)自(zì)为(wéi)大(dà)，故(gù)能(néng)成(chéng)其(qí)大(dà)。</p>
+<h2 id="第35章-往而不害"><a href="#第35章-往而不害" class="headerlink" title="第35章 往而不害"></a>第35章 往而不害</h2><p>执(zhí)大(dà)象(xiàng)，天(tiān)下(xià)往(wǎng)。<br>往(wǎng)而(ér)不(bù)害(hài)，安(ān)平(píng)泰(tài)。<br>乐(lè)与(yǔ)饵(ěr)，过(guò)客(kè)止(zhǐ)。<br>道(dào)之(zhī)出(chū)口(kǒu)，淡(dàn)乎(hū)其(qí)无(wú)味(wèi)。<br>视(shì)之(zhī)不(bù)足(zú)见(jiàn)，听(tīng)之(zhī)不(bù)足(zú)闻(wén)，用(yòng)之(zhī)不(bù)足(zú)既(jì)。</p>
+<h2 id="第36章-柔弱刚强"><a href="#第36章-柔弱刚强" class="headerlink" title="第36章 柔弱刚强"></a>第36章 柔弱刚强</h2><p>将(jiāng)欲(yù)歙(xī)之(zhī)，必(bì)故(gù)张(zhāng)之(zhī)；<br>将(jiāng)欲(yù)弱(ruò)之(zhī)，必(bì)故(gù)强(qiáng)之(zhī)；<br>将(jiāng)欲(yù)废(fèi)之(zhī)，必(bì)故(gù)兴(xīng)之(zhī)；<br>将(jiāng)欲(yù)取(qǔ)之(zhī)，必(bì)故(gù)予(yǔ)之(zhī)。<br>是(shì)谓(wèi)微(wēi)明(míng)。<br>柔(róu)弱(ruò)胜(shèng)刚(gāng)强(qiáng)。<br>鱼(yú)不(bù)可(kě)脱(tuō)于(yú)渊(yuān)，国(guó)之(zhī)利(lì)器(qì)，不(bù)可(kě)以(yǐ)示(shì)人(rén)。</p>
+<h2 id="第37章-道常无为"><a href="#第37章-道常无为" class="headerlink" title="第37章 道常无为"></a>第37章 道常无为</h2><p>道(dào)常(cháng)无(wú)为(wéi)，而(ér)无(wú)不(bù)为(wéi)。<br>侯(hóu)王(wáng)若(ruò)能(néng)守(shǒu)之(zhī)，万(wàn)物(wù)将(jiāng)自(zì)化(huà)。<br>化(huà)而(ér)欲(yù)作(zuò)，吾(wú)将(jiāng)镇(zhèn)之(zhī)以(yǐ)无(wú)名(míng)之(zhī)朴(pǔ)。<br>无(wú)名(míng)之(zhī)朴(pǔ)，夫(fú)亦(yì)将(jiāng)不(bù)欲(yù)。<br>不(bù)欲(yù)以(yǐ)静(jìng)，天(tiān)下(xià)将(jiāng)自(zì)定(dìng)。</p>
+<h2 id="第38章-处实去华"><a href="#第38章-处实去华" class="headerlink" title="第38章 处实去华"></a>第38章 处实去华</h2><p>上(shàng)德(dé)不(bù)德(dé)，是(shì)以(yǐ)有(yǒu)德(dé)；<br>下(xià)德(dé)不(bù)失(shī)德(dé)，是(shì)以(yǐ)无(wú)德(dé)。<br>上(shàng)德(dé)无(wú)为(wéi)而(ér)无(wú)以(yǐ)为(wéi)；<br>下(xià)德(dé)无(wú)为(wéi)而(ér)有(yǒu)以(yǐ)为(wéi)。<br>上(shàng)仁(rén)为(wéi)之(zhī)而(ér)无(wú)以(yǐ)为(wéi)；<br>上(shàng)义(yì)为(wéi)之(zhī)而(ér)有(yǒu)以(yǐ)为(wéi)。<br>上(shàng)礼(lǐ)为(wéi)之(zhī)而(ér)莫(mò)之(zhī)应(yìng)，<br>则(zé)攘(rǎng)臂(bì)而(ér)扔(rēng)之(zhī)。<br>故(gù)失(shī)道(dào)而(ér)后(hòu)德(dé)，失(shī)德(dé)而(ér)后(hòu)仁(rén)，<br>失(shī)仁(rén)而(ér)后(hòu)义(yì)，失(shī)义(yì)而(ér)后(hòu)礼(lǐ)。<br>夫(fú)礼(lǐ)者(zhě)，忠(zhōng)信(xìn)之(zhī)薄(bó)，而(ér)乱(luàn)之(zhī)首(shǒu)。<br>前(qián)识(shí)者(zhě)，道(dào)之(zhī)华(huá)，而(ér)愚(yú)之(zhī)始(shǐ)。<br>是(shì)以(yǐ)大(dà)丈(zhàng)夫(fu)处(chǔ)其(qí)厚(hòu)，不(bù)居(jū)其(qí)薄(bó)；<br>处(chǔ)其(qí)实(shí)，不(bù)居(jū)其(qí)华(huá)。<br>故(gù)去(qù)彼(bǐ)取(qǔ)此(cǐ)。</p>
+<h2 id="第39章-贱为贵本"><a href="#第39章-贱为贵本" class="headerlink" title="第39章 贱为贵本"></a>第39章 贱为贵本</h2><p>昔(xī)之(zhī)得(dé)一(yī)者(zhě)：<br>天(tiān)得(dé)一(yī)以(yǐ)清(qīng)；<br>地(dì)得(dé)一(yī)以(yǐ)宁(níng)；<br>神(shén)得(dé)一(yī)以(yǐ)灵(líng)；<br>谷(gǔ)得(dé)一(yī)以(yǐ)盈(yíng)；<br>万(wàn)物(wù)得(dé)一(yī)以(yǐ)生(shēng)；<br>侯(hóu)王(wáng)得(dé)一(yī)以(yǐ)为(wéi)天(tiān)下(xià)正(zhèng)。<br>其(qí)致(zhì)之(zhī)也(yě)，<br>天(tiān)无(wú)以(yǐ)清(qīng)，将(jiāng)恐(kǒng)裂(liè)；<br>地(dì)无(wú)以(yǐ)宁(níng)，将(jiāng)恐(kǒng)废(fèi)；<br>神(shén)无(wú)以(yǐ)灵(líng)，将(jiāng)恐(kǒng)歇(xiē)；<br>谷(gǔ)无(wú)以(yǐ)盈(yíng)，将(jiāng)恐(kǒng)竭(jié)；<br>万(wàn)物(wù)无(wú)以(yǐ)生(shēng)，将(jiāng)恐(kǒng)灭(miè)；<br>侯(hóu)王(wáng)无(wú)以(yǐ)贵(guì)高(gāo)，将(jiāng)恐(kǒng)蹶(jué)。<br>故(gù)贵(guì)以(yǐ)贱(jiàn)为(wéi)本(běn)，高(gāo)以(yǐ)下(xià)为(wéi)基(jī)。<br>是(shì)以(yǐ)侯(hóu)王(wáng)自(zì)称(chēng)孤(gū)、寡(guǎ)、不(bù)谷(gǔ)。<br>此(cǐ)非(fēi)以(yǐ)贱(jiàn)为(wéi)本(běn)邪(xié)？非(fēi)乎(hū)？<br>故(gù)致(zhì)誉(yù)无(wú)誉(yù)。<br>不(bù)欲(yù)琭(lù)琭(lù)如(rú)玉(yù)，珞(luò)珞(luò)如(rú)石(shí)。</p>
+<h2 id="第40章-有生于无"><a href="#第40章-有生于无" class="headerlink" title="第40章 有生于无"></a>第40章 有生于无</h2><p>反(fǎn)者(zhě)，道(dào)之(zhī)动(dòng)；<br>弱(ruò)者(zhě)，道(dào)之(zhī)用(yòng)。<br>天(tiān)下(xià)万(wàn)物(wù)生(shēng)于(yú)有(yǒu)，有(yǒu)生(shēng)于(yú)无(wú)。</p>
+<h2 id="第41章-大器晚成"><a href="#第41章-大器晚成" class="headerlink" title="第41章 大器晚成"></a>第41章 大器晚成</h2><p>上(shàng)士(shì)闻(wén)道(dào)，勤(qín)而(ér)行(xíng)之(zhī)；<br>中(zhōng)士(shì)闻(wén)道(dào)，若(ruò)存(cún)若(ruò)亡(wáng)；<br>下(xià)士(shì)闻(wén)道(dào)，大(dà)笑(xiào)之(zhī)。<br>不(bù)笑(xiào)，不(bù)足(zú)以(yǐ)为(wéi)道(dào)。<br>故(gù)建(jiàn)言(yán)有(yǒu)之(zhī)：<br>明(míng)道(dào)若(ruò)昧(mèi)；进(jìn)道(dào)若(ruò)退(tuì)；夷(yí)道(dào)若(lèi)颣(lèi)；<br>上(shàng)德(dé)若(ruò)谷(gǔ)；广(guǎng)德(dé)若(ruò)不(bù)足(zú)；<br>建(jiàn)德(dé)若(ruò)偷(tōu)；质(zhì)真(zhēn)若(ruò)渝(yú)；<br>大(dà)白(bái)若(ruò)辱(rǔ)；大(dà)方(fāng)无(wú)隅(yú)；<br>大(dà)器(qì)晚(wǎn)成(chéng)；大(dà)音(yīn)希(xī)声(shēng)；<br>大(dà)象(xiàng)无(wú)形(xíng)；道(dào)隐(yǐn)无(wú)名(míng)。<br>夫(fú)唯(wéi)道(dào)，善(shàn)贷(dài)且(qiě)成(chéng)。</p>
+<h2 id="第42章-或损或益"><a href="#第42章-或损或益" class="headerlink" title="第42章 或损或益"></a>第42章 或损或益</h2><p>道(dào)生(shēng)一(yī)，一(yī)生(shēng)二(èr)，<br>二(èr)生(shēng)三(sān)，三(sān)生(shēng)万(wàn)物(wù)。<br>万(wàn)物(wù)负(fù)阴(yīn)而(ér)抱(bào)阳(yáng)，冲(chōng)气(qì)以(yǐ)为(wéi)和(hé)。<br>人(rén)之(zhī)所(suǒ)恶(è)，唯(wéi)孤(gū)、寡(guǎ)、不(bù)谷(gǔ)，<br>而(ér)王(wáng)公(gōng)以(yǐ)为(wéi)称(chēng)。<br>故(gù)物(wù)，或(huò)损(sǔn)之(zhī)而(ér)益(yì)，或(huò)益(yì)之(zhī)而(ér)损(sǔn)。<br>人(rén)之(zhī)所(suǒ)教(jiào)，我(wǒ)亦(yì)教(jiào)之(zhī)。<br>强(qiáng)梁(liáng)者(zhě)不(bù)得(dé)其(qí)死(sǐ)，吾(wú)将(jiāng)以(yǐ)为(wéi)教(jiào)父(fù)。</p>
+<h2 id="第43章-无为之益"><a href="#第43章-无为之益" class="headerlink" title="第43章 无为之益"></a>第43章 无为之益</h2><p>天(tiān)下(xià)之(zhī)至(zhì)柔(róu)，驰(chí)骋(chěng)天(tiān)下(xià)之(zhī)至(zhì)坚(jiān)。<br>无(wú)有(yǒu)入(rù)无(wú)间(jiàn)，吾(wú)是(shì)以(yǐ)知(zhī)无(wú)为(wéi)之(zhī)有(yǒu)益(yì)。<br>不(bù)言(yán)之(zhī)教(jiào)，无(wú)为(wéi)之(zhī)益(yì)，天(tiān)下(xià)希(xī)及(jí)之(zhī)。</p>
+<h2 id="第44章-知足不辱"><a href="#第44章-知足不辱" class="headerlink" title="第44章 知足不辱"></a>第44章 知足不辱</h2><p>名(míng)与(yǔ)身(shēn)孰(shú)亲(qīn)？<br>身(shēn)与(yǔ)货(huò)孰(shú)多(duō)？<br>得(dé)与(yǔ)亡(wáng)孰(shú)病(bìng)？<br>是(shì)故(gù)甚(shèn)爱(ài)必(bì)大(dà)费(fèi)；<br>多(duō)藏(cáng)必(bì)厚(hòu)亡(wáng)。<br>知(zhī)足(zú)不(bù)辱(rǔ)，知(zhī)止(zhǐ)不(bù)殆(dài)，可(kě)以(yǐ)长(cháng)久(jiǔ)。</p>
+<h2 id="第45章-大成若缺"><a href="#第45章-大成若缺" class="headerlink" title="第45章 大成若缺"></a>第45章 大成若缺</h2><p>大(dà)成(chéng)若(ruò)缺(quē)，其(qí)用(yòng)不(bù)弊(bì)。<br>大(dà)盈(yíng)若(ruò)冲(chōng)，其(qí)用(yòng)不(bù)穷(qióng)。<br>大(dà)直(zhí)若(ruò)屈(qū)，大(dà)巧(qiǎo)若(ruò)拙(zhuō)，大(dà)辩(biàn)若(ruò)讷(nè)。<br>静(jìng)胜(shèng)躁(zào)，寒(hán)胜(shèng)热(rè)。<br>清(qīng)静(jìng)，为(wéi)天(tiān)下(xià)正(zhèng)。</p>
+<h2 id="第46章-知足常足"><a href="#第46章-知足常足" class="headerlink" title="第46章 知足常足"></a>第46章 知足常足</h2><p>天(tiān)下(xià)有(yǒu)道(dào)，却(què)走(zǒu)马(mǎ)以(yǐ)粪(fèn)。<br>天(tiān)下(xià)无(wú)道(dào)，戎(róng)马(mǎ)生(shēng)于(yú)郊(jiāo)。<br>祸(huò)莫(mò)大(dà)于(yú)不(bù)知(zhī)足(zú)；<br>咎(jiù)莫(mò)大(dà)于(yú)欲(yù)得(dé)。<br>故(gù)知(zhī)足(zú)之(zhī)足(zú)，常(cháng)足(zú)矣(yǐ)。</p>
+<h2 id="第47章-不为而成"><a href="#第47章-不为而成" class="headerlink" title="第47章 不为而成"></a>第47章 不为而成</h2><p>不(bù)出(chū)户(hù)，知(zhī)天(tiān)下(xià)；<br>不(bù)窥(kuī)牖(yǒu)，见(jiàn)天(tiān)道(dào)。<br>其(qí)出(chū)弥(mí)远(yuǎn)，其(qí)知(zhī)弥(mí)少(shǎo)。<br>是(shì)以(yǐ)圣(shèng)人(rén)不(bù)行(xíng)而(ér)知(zhī)，<br>不(bù)见(jiàn)而(ér)明(míng)，不(bù)为(wéi)而(ér)成(chéng)。</p>
+<h2 id="第48章-为学日益"><a href="#第48章-为学日益" class="headerlink" title="第48章 为学日益"></a>第48章 为学日益</h2><p>为(wéi)学(xué)日(rì)益(yì)，为(wéi)道(dào)日(rì)损(sǔn)。<br>损(sǔn)之(zhī)又(yòu)损(sǔn)，以(yǐ)至(zhì)于(yú)无(wú)为(wéi)。<br>无(wú)为(wéi)而(ér)无(wú)不(bù)为(wéi)。<br>取(qǔ)天(tiān)下(xià)常(cháng)以(yǐ)无(wú)事(shì)，<br>及(jí)其(qí)有(yǒu)事(shì)，不(bù)足(zú)以(yǐ)取(qǔ)天(tiān)下(xià)。</p>
+<h2 id="第49章-圣无常心"><a href="#第49章-圣无常心" class="headerlink" title="第49章 圣无常心"></a>第49章 圣无常心</h2><p>圣(shèng)人(rén)常(cháng)无(wú)心(xīn)，以(yǐ)百(bǎi)姓(xìng)心(xīn)为(wéi)心(xīn)。<br>善(shàn)者(zhě)，吾(wú)善(shàn)之(zhī)；<br>不(bù)善(shàn)者(zhě)，吾(wú)亦(yì)善(shàn)之(zhī)；德(dé)善(shàn)。<br>信(xìn)者(zhě)，吾(wú)信(xìn)之(zhī)；<br>不(bù)信(xìn)者(zhě)，吾(wú)亦(yì)信(xìn)之(zhī)；德(dé)信(xìn)。<br>圣(shèng)人(rén)在(zài)天(tiān)下(xià)，歙(xī)歙(xī)焉(yān)，<br>为(wéi)天(tiān)下(xià)浑(hún)其(qí)心(xīn)，百(bǎi)姓(xìng)皆(jiē)注(zhù)其(qí)耳(ěr)目(mù)，<br>圣(shèng)人(rén)皆(jiē)孩(hái)之(zhī)。</p>
+<h2 id="第50章-出生入死"><a href="#第50章-出生入死" class="headerlink" title="第50章 出生入死"></a>第50章 出生入死</h2><p>出(chū)生(shēng)入(rù)死(sǐ)。<br>生(shēng)之(zhī)徒(tú)，十(shí)有(yǒu)三(sān)；<br>死(sǐ)之(zhī)徒(tú)，十(shí)有(yǒu)三(sān)；<br>人(rén)之(zhī)生(shēng)，动(dòng)之(zhī)于(yú)死(sǐ)地(dì)，亦(yì)十(shí)有(yǒu)三(sān)。<br>夫(fú)何(hé)故(gù)？以(yǐ)其(qí)生(shēng)生(shēng)之(zhī)厚(hòu)。<br>盖(gài)闻(wén)善(shàn)摄(shè)生(shēng)者(zhě)，<br>陆(lù)行(xíng)不(bù)遇(yù)兕(sì)虎(hǔ)，<br>入(rù)军(jūn)不(bù)被(bèi)甲(jiǎ)兵(bīng)。<br>兕(sì)无(wú)所(suǒ)投(tóu)其(qí)角(jiǎo)，<br>虎(hǔ)无(wú)所(suǒ)措(cuò)其(qí)爪(zhǎo)，<br>兵(bīng)无(wú)所(suǒ)容(róng)其(qí)刃(rèn)。<br>夫(fú)何(hé)故(gù)？以(yǐ)其(qí)无(wú)死(sǐ)地(dì)。</p>
+<h2 id="第51章-尊道贵德"><a href="#第51章-尊道贵德" class="headerlink" title="第51章 尊道贵德"></a>第51章 尊道贵德</h2><p>道(dào)生(shēng)之(zhī)，德(dé)畜(xù)之(zhī)，<br>物(wù)形(xíng)之(zhī)，势(shì)成(chéng)之(zhī)。<br>是(shì)以(yǐ)万(wàn)物(wù)莫(mò)不(bù)尊(zūn)道(dào)而(ér)贵(guì)德(dé)。<br>道(dào)之(zhī)尊(zūn)，德(dé)之(zhī)贵(guì)，<br>夫(fú)莫(mò)之(zhī)命(mìng)，而(ér)常(cháng)自(zì)然(rán)。<br>故(gù)道(dào)生(shēng)之(zhī)，德(dé)畜(xù)之(zhī)，<br>长(zhǎng)之(zhī)育(yù)之(zhī)，亭(tíng)之(zhī)毒(dú)之(zhī)，养(yǎng)之(zhī)覆(fù)之(zhī)。<br>生(shēng)而(ér)不(bù)有(yǒu)，为(wéi)而(ér)不(bù)恃(shì)，<br>长(zhǎng)而(ér)不(bù)宰(zǎi)，是(shì)谓(wèi)玄(xuán)德(dé)。</p>
+<h2 id="第52章-天下有始"><a href="#第52章-天下有始" class="headerlink" title="第52章 天下有始"></a>第52章 天下有始</h2><p>天(tiān)下(xià)有(yǒu)始(shǐ)，以(yǐ)为(wéi)天(tiān)下(xià)母(mǔ)。<br>既(jì)得(dé)其(qí)母(mǔ)，以(yǐ)知(zhī)其(qí)子(zǐ)；<br>既(jì)知(zhī)其(qí)子(zǐ)，复(fù)守(shǒu)其(qí)母(mǔ)，<br>没(mò)身(shēn)不(bù)殆(dài)。<br>塞(sè)其(qí)兑(duì)，闭(bì)其(qí)门(mén)，终(zhōng)身(shēn)不(bù)勤(qín)。<br>开(kāi)其(qí)兑(duì)，济(jì)其(qí)事(shì)，终(zhōng)身(shēn)不(bù)救(jiù)。<br>见(jiàn)小(xiǎo)曰(yuē)明(míng)，守(shǒu)柔(róu)曰(yuē)强(qiáng)。<br>用(yòng)其(qí)光(guāng)，复(fù)归(guī)其(qí)明(míng)，无(wú)遗(yí)身(shēn)殃(yāng)。<br>是(shì)谓(wèi)袭(xí)常(cháng)。</p>
+<h2 id="第53章-行于大道"><a href="#第53章-行于大道" class="headerlink" title="第53章 行于大道"></a>第53章 行于大道</h2><p>使(shǐ)我(wǒ)介(jiè)然(rán)有(yǒu)知(zhī)，行(xíng)于(yú)大(dà)道(dào)，唯(wéi)施(shī)是(shì)畏(wèi)。<br>大(dà)道(dào)甚(shèn)夷(yí)，而(ér)人(rén)好(hào)径(jìng)。<br>朝(cháo)甚(shèn)除(chú)，田(tián)甚(shèn)芜(wú)，仓(cāng)甚(shèn)虚(xū)；<br>服(fú)文(wén)采(cǎi)，带(dài)利(lì)剑(jiàn)，厌(yàn)饮(yǐn)食(shí)，财(cái)货(huò)有(yǒu)余(yú)；<br>是(shì)谓(wèi)盗(dào)夸(kuā)。非(fēi)道(dào)也(yě)哉(zāi)！</p>
+<h2 id="第54章-善抱大道"><a href="#第54章-善抱大道" class="headerlink" title="第54章 善抱大道"></a>第54章 善抱大道</h2><p>善(shàn)建(jiàn)者(zhě)不(bù)拔(bá)，善(shàn)抱(bào)者(zhě)不(bù)脱(tuō)，<br>子(zǐ)孙(sūn)以(yǐ)祭(jì)祀(sì)不(bù)辍(chuò)。<br>修(xiū)之(zhī)于(yú)身(shēn)，其(qí)德(dé)乃(nǎi)真(zhēn)；<br>修(xiū)之(zhī)于(yú)家(jiā)，其(qí)德(dé)乃(nǎi)余(yú)；<br>修(xiū)之(zhī)于(yú)乡(xiāng)，其(qí)德(dé)乃(nǎi)长(zhǎng)；<br>修(xiū)之(zhī)于(yú)国(guó)，其(qí)德(dé)乃(nǎi)丰(fēng)；<br>修(xiū)之(zhī)于(yú)天(tiān)下(xià)，其(qí)德(dé)乃(nǎi)普(pǔ)。<br>故(gù)以(yǐ)身(shēn)观(guān)身(shēn)，以(yǐ)家(jiā)观(guān)家(jiā)，<br>以(yǐ)乡(xiāng)观(guān)乡(xiāng)，以(yǐ)国(guó)观(guān)国(guó)，<br>以(yǐ)天(tiān)下(xià)观(guān)天(tiān)下(xià)。<br>吾(wú)何(hé)以(yǐ)知(zhī)天(tiān)下(xià)然(rán)哉(zāi)？以(yǐ)此(cǐ)。</p>
+<h2 id="第55章-物壮则老"><a href="#第55章-物壮则老" class="headerlink" title="第55章 物壮则老"></a>第55章 物壮则老</h2><p>含(hán)德(dé)之(zhī)厚(hòu)，比(bǐ)于(yú)赤(chì)子(zǐ)。<br>毒(dú)虫(chóng)不(bù)螫(shì)，猛(měng)兽(shòu)不(bù)据(jù)，攫(jué)鸟(niǎo)不(bù)搏(bó)。<br>骨(gǔ)弱(ruò)筋(jīn)柔(róu)而(ér)握(wò)固(gù)，<br>未(wèi)知(zhī)牝(pìn)牡(mǔ)之(zhī)合(hé)而(ér)朘(zuī)作(zuò)，精(jīng)之(zhī)至(zhì)也(yě)。<br>终(zhōng)日(rì)号(háo)而(ér)不(bù)嗄(shà)，和(hé)之(zhī)至(zhì)也(yě)。<br>知(zhī)和(hé)曰(yuē)常(cháng)，知(zhī)常(cháng)曰(yuē)明(míng)。<br>益(yì)生(shēng)曰(yuē)祥(xiáng)，心(xīn)使(shǐ)气(qì)曰(yuē)强(qiáng)。<br>物(wù)壮(zhuàng)则(zé)老(lǎo)，谓(wèi)之(zhī)不(bù)道(dào)，不(bù)道(dào)早(zǎo)已(yǐ)。</p>
+<h2 id="第56章-知者不言"><a href="#第56章-知者不言" class="headerlink" title="第56章 知者不言"></a>第56章 知者不言</h2><p>知(zhī)者(zhě)不(bù)言(yán)，言(yán)者(zhě)不(bù)知(zhī)。<br>塞(sè)其(qí)兑(duì)，闭(bì)其(qí)门(mén)，<br>挫(cuò)其(qí)锐(ruì)，解(jiě)其(qí)纷(fēn)，<br>和(hé)其(qí)光(guāng)，同(tóng)其(qí)尘(chén)，<br>是(shì)谓(wèi)玄(xuán)同(tóng)。<br>故(gù)不(bù)可(kě)得(dé)而(ér)亲(qīn)，不(bù)可(kě)得(dé)而(ér)疏(shū)；<br>不(bù)可(kě)得(dé)而(ér)利(lì)，不(bù)可(kě)得(dé)而(ér)害(hài)；<br>不(bù)可(kě)得(dé)而(ér)贵(guì)，不(bù)可(kě)得(dé)而(ér)贱(jiàn)。<br>故(gù)为(wéi)天(tiān)下(xià)贵(guì)。</p>
+<h2 id="第57章-以正治国"><a href="#第57章-以正治国" class="headerlink" title="第57章 以正治国"></a>第57章 以正治国</h2><p>以(yǐ)正(zhèng)治(zhì)国(guó)，以(yǐ)奇(qí)用(yòng)兵(bīng)，<br>以(yǐ)无(wú)事(shì)取(qǔ)天(tiān)下(xià)。<br>吾(wú)何(hé)以(yǐ)知(zhī)其(qí)然(rán)哉(zāi)？以(yǐ)此(cǐ)：<br>天(tiān)下(xià)多(duō)忌(jì)讳(huì)，而(ér)民(mín)弥(mí)贫(pín)；<br>民(mín)多(duō)利(lì)器(qì)，国(guó)家(jiā)滋(zī)昏(hūn)；<br>人(rén)多(duō)技(jì)巧(qiǎo)，奇(qí)物(wù)滋(zī)起(qǐ)；<br>法(fǎ)令(lìng)滋(zī)彰(zhāng)，盗(dào)贼(zéi)多(duō)有(yǒu)。<br>故(gù)圣(shèng)人(rén)云(yún)：<br>我(wǒ)无(wú)为(wéi)，而(ér)民(mín)自(zì)化(huà)；<br>我(wǒ)好(hào)静(jìng)，而(ér)民(mín)自(zì)正(zhèng)；<br>我(wǒ)无(wú)事(shì)，而(ér)民(mín)自(zì)富(fù)；<br>我(wǒ)无(wú)欲(yù)，而(ér)民(mín)自(zì)朴(pǔ)。</p>
+<h2 id="第58章-福祸相倚"><a href="#第58章-福祸相倚" class="headerlink" title="第58章 福祸相倚"></a>第58章 福祸相倚</h2><p>其(qí)政(zhèng)闷(mèn)闷(mèn)，其(qí)民(mín)淳(chún)淳(chún)；<br>其(qí)政(zhèng)察(chá)察(chá)，其(qí)民(mín)缺(quē)缺(quē)。<br>祸(huò)兮(xī)，福(fú)之(zhī)所(suǒ)倚(yǐ)；<br>福(fú)兮(xī)，祸(huò)之(zhī)所(suǒ)伏(fú)。<br>孰(shú)知(zhī)其(qí)极(jí)？其(qí)无(wú)正(zhèng)也(yě)。<br>正(zhèng)复(fù)为(wéi)奇(qí)，善(shàn)复(fù)为(wéi)妖(yāo)。<br>人(rén)之(zhī)迷(mí)，其(qí)日(rì)固(gù)久(jiǔ)。<br>是(shì)以(yǐ)圣(shèng)人(rén)方(fāng)而(ér)不(bù)割(gē)，<br>廉(lián)而(ér)不(bù)刿(guì)，直(zhí)而(ér)不(bù)肆(sì)，光(guāng)而(ér)不(bù)耀(yào)。</p>
+<h2 id="第59章-长生久视"><a href="#第59章-长生久视" class="headerlink" title="第59章 长生久视"></a>第59章 长生久视</h2><p>治(zhì)人(rén)事(shì)天(tiān)，莫(mò)若(ruò)啬(sè)。<br>夫(fú)唯(wéi)啬(sè)，是(shì)谓(wèi)早(zǎo)服(fú)。<br>早(zǎo)服(fú)谓(wèi)之(zhī)重(zhòng)积(jī)德(dé)；<br>重(zhòng)积(jī)德(dé)，则(zé)无(wú)不(bù)克(kè)；<br>无(wú)不(bù)克(kè)，则(zé)莫(mò)知(zhī)其(qí)极(jí)；<br>莫(mò)知(zhī)其(qí)极(jí)，可(kě)以(yǐ)有(yǒu)国(guó)；<br>有(yǒu)国(guó)之(zhī)母(mǔ)，可(kě)以(yǐ)长(cháng)久(jiǔ)。<br>是(shì)谓(wèi)深(shēn)根(gēn)固(gù)柢(dǐ)，长(cháng)生(shēng)久(jiǔ)视(shì)之(zhī)道(dào)。</p>
+<h2 id="第60章-治国烹鲜"><a href="#第60章-治国烹鲜" class="headerlink" title="第60章 治国烹鲜"></a>第60章 治国烹鲜</h2><p>治(zhì)大(dà)国(guó)，若(ruò)烹(pēng)小(xiǎo)鲜(xiān)。<br>以(yǐ)道(dào)莅(lì)天(tiān)下(xià)，其(qí)鬼(guǐ)不(bù)神(shén)。<br>非(fēi)其(qí)鬼(guǐ)不(bù)神(shén)，其(qí)神(shén)不(bù)伤(shāng)人(rén)。<br>非(fēi)其(qí)神(shén)不(bù)伤(shāng)人(rén)，圣(shèng)人(rén)亦(yì)不(bù)伤(shāng)人(rén)。<br>夫(fū)两(liǎng)不(bù)相(xiāng)伤(shāng)，故(gù)德(dé)交(jiāo)归(guī)焉(yān)。</p>
+<h2 id="第61章-各得其所"><a href="#第61章-各得其所" class="headerlink" title="第61章 各得其所"></a>第61章 各得其所</h2><p>大(dà)邦(bāng)者(zhě)下(xià)流(liú)，<br>天(tiān)下(xià)之(zhī)牝(pìn)，天(tiān)下(xià)之(zhī)交(jiāo)也(yě)。<br>牝(pìn)常(cháng)以(yǐ)静(jìng)胜(shèng)牡(mǔ)，以(yǐ)静(jìng)为(wéi)下(xià)。<br>故(gù)大(dà)邦(bāng)以(yǐ)下(xià)小(xiǎo)邦(bāng)，则(zé)取(qǔ)小(xiǎo)邦(bāng)；<br>小(xiǎo)邦(bāng)以(yǐ)下(xià)大(dà)邦(bāng)，则(zé)取(qǔ)大(dà)邦(bāng)。<br>故(gù)或(huò)下(xià)以(yǐ)取(qǔ)，或(huò)下(xià)而(ér)取(qǔ)。<br>大(dà)邦(bāng)不(bù)过(guò)欲(yù)兼(jiān)畜(xù)人(rén)，<br>小(xiǎo)邦(bāng)不(bù)过(guò)欲(yù)入(rù)事(shì)人(rén)。<br>夫(fū)两(liǎng)者(zhě)各(gè)得(dé)所(suǒ)欲(yù)，大(dà)者(zhě)宜(yí)为(wéi)下(xià)。</p>
+<h2 id="第62章-万物之奥"><a href="#第62章-万物之奥" class="headerlink" title="第62章 万物之奥"></a>第62章 万物之奥</h2><p>道(dào)者(zhě)，万(wàn)物(wù)之(zhī)奥(ào)。<br>善(shàn)人(rén)之(zhī)宝(bǎo)，不(bù)善(shàn)人(rén)之(zhī)所(suǒ)保(bǎo)。<br>美(měi)言(yán)可(kě)以(yǐ)市(shì)尊(zūn)，美(měi)行(xíng)可(kě)以(yǐ)加(jiā)人(rén)。<br>人(rén)之(zhī)不(bù)善(shàn)，何(hé)弃(qì)之(zhī)有(yǒu)？<br>故(gù)立(lì)天(tiān)子(zǐ)，置(zhì)三(sān)公(gōng)，<br>虽(suī)有(yǒu)拱(gǒng)璧(bì)以(yǐ)先(xiān)驷(sì)马(mǎ)，不(bù)如(rú)坐(zuò)进(jìn)此(cǐ)道(dào)。<br>古(gǔ)之(zhī)所(suǒ)以(yǐ)贵(guì)此(cǐ)道(dào)者(zhě)何(hé)？<br>不(bù)曰(yuē)：求(qiú)以(yǐ)得(dé)，有(yǒu)罪(zuì)以(yǐ)免(miǎn)邪(xié)？<br>故(gù)为(wéi)天(tiān)下(xià)贵(guì)。</p>
+<h2 id="第63章-为大于细"><a href="#第63章-为大于细" class="headerlink" title="第63章 为大于细"></a>第63章 为大于细</h2><p>为(wéi)无(wú)为(wéi)，事(shì)无(wú)事(shì)，味(wèi)无(wú)味(wèi)。<br>大(dà)小(xiǎo)多(duō)少(shǎo)，报(bào)怨(yuàn)以(yǐ)德(dé)。<br>图(tú)难(nán)于(yú)其(qí)易(yì)，为(wéi)大(dà)于(yú)其(qí)细(xì)。<br>天(tiān)下(xià)难(nán)事(shì)，必(bì)作(zuò)于(yú)易(yì)；<br>天(tiān)下(xià)大(dà)事(shì)，必(bì)作(zuò)于(yú)细(xì)。<br>是(shì)以(yǐ)圣(shèng)人(rén)终(zhōng)不(bù)为(wéi)大(dà)，故(gù)能(néng)成(chéng)其(qí)大(dà)。<br>夫(fū)轻(qīng)诺(nuò)必(bì)寡(guǎ)信(xìn)，多(duō)易(yì)必(bì)多(duō)难(nán)。<br>是(shì)以(yǐ)圣(shèng)人(rén)犹(yóu)难(nán)之(zhī)，故(gù)终(zhōng)无(wú)难(nán)矣(yǐ)。</p>
+<h2 id="第64章-慎终如始"><a href="#第64章-慎终如始" class="headerlink" title="第64章 慎终如始"></a>第64章 慎终如始</h2><p>其(qí)安(ān)易(yì)持(chí)，其(qí)未(wèi)兆(zhào)易(yì)谋(móu)。<br>其(qí)脆(cuì)易(yì)泮(pàn)，其(qí)微(wēi)易(yì)散(sàn)。<br>为(wéi)之(zhī)于(yú)未(wèi)有(yǒu)，治(zhì)之(zhī)于(yú)未(wèi)乱(luàn)。<br>合(hé)抱(bào)之(zhī)木(mù)，生(shēng)于(yú)毫(háo)末(mò)；<br>九(jiǔ)层(céng)之(zhī)台(tái)，起(qǐ)于(yú)累(lěi)土(tǔ)；<br>千(qiān)里(lǐ)之(zhī)行(xíng)，始(shǐ)于(yú)足(zú)下(xià)。<br>为(wéi)者(zhě)败(bài)之(zhī)，执(zhí)者(zhě)失(shī)之(zhī)。<br>是(shì)以(yǐ)圣(shèng)人(rén)无(wú)为(wéi)，故(gù)无(wú)败(bài)；<br>无(wú)执(zhí)，故(gù)无(wú)失(shī)。<br>民(mín)之(zhī)从(cóng)事(shì)，常(cháng)于(yú)几(jī)成(chéng)而(ér)败(bài)之(zhī)。<br>慎(shèn)终(zhōng)如(rú)始(shǐ)，则(zé)无(wú)败(bài)事(shì)。<br>是(shì)以(yǐ)圣(shèng)人(rén)欲(yù)不(bù)欲(yù)，不(bù)贵(guì)难(nán)得(dé)之(zhī)货(huò)；<br>学(xué)不(bù)学(xué)，复(fù)众(zhòng)人(rén)之(zhī)所(suǒ)过(guò)。<br>以(yǐ)辅(fǔ)万(wàn)物(wù)之(zhī)自(zì)然(rán)，而(ér)不(bù)敢(gǎn)为(wéi)。</p>
+<h2 id="第65章-善为道者"><a href="#第65章-善为道者" class="headerlink" title="第65章 善为道者"></a>第65章 善为道者</h2><p>古(gǔ)之(zhī)善(shàn)为(wéi)道(dào)者(zhě)，<br>非(fēi)以(yǐ)明(míng)民(mín)，将(jiāng)以(yǐ)愚(yú)之(zhī)。<br>民(mín)之(zhī)难(nán)治(zhì)，以(yǐ)其(qí)智(zhì)多(duō)。<br>故(gù)以(yǐ)智(zhì)治(zhì)国(guó)，国(guó)之(zhī)贼(zéi)；<br>不(bù)以(yǐ)智(zhì)治(zhì)国(guó)，国(guó)之(zhī)福(fú)。<br>知(zhī)此(cǐ)两(liǎng)者(zhě)，亦(yì)稽(jī)式(shì)。<br>常(cháng)知(zhī)稽(jī)式(shì)，是(shì)谓(wèi)玄(xuán)德(dé)。<br>玄(xuán)德(dé)深(shēn)矣(yǐ)，远(yuǎn)矣(yǐ)，<br>与(yǔ)物(wù)反(fǎn)矣(yǐ)，然(rán)后(hòu)乃(nǎi)至(zhì)大(dà)顺(shùn)。</p>
+<h2 id="第66章-不争之争"><a href="#第66章-不争之争" class="headerlink" title="第66章 不争之争"></a>第66章 不争之争</h2><p>江(jiāng)海(hǎi)所(suǒ)以(yǐ)能(néng)为(wéi)百(bǎi)谷(gǔ)王(wáng)者(zhě)，<br>以(yǐ)其(qí)善(shàn)下(xià)之(zhī)，故(gù)能(néng)为(wéi)百(bǎi)谷(gǔ)王(wáng)。<br>是(shì)以(yǐ)圣(shèng)人(rén)欲(yù)上(shàng)民(mín)，必(bì)以(yǐ)言(yán)下(xià)之(zhī)；<br>欲(yù)先(xiān)民(mín)，必(bì)以(yǐ)身(shēn)后(hòu)之(zhī)。<br>是(shì)以(yǐ)圣(shèng)人(rén)处(chǔ)上(shàng)而(ér)民(mín)不(bù)重(zhòng)，<br>处(chǔ)前(qián)而(ér)民(mín)不(bù)害(hài)。<br>是(shì)以(yǐ)天(tiān)下(xià)乐(lè)推(tuī)而(ér)不(bù)厌(yàn)。<br>以(yǐ)其(qí)不(bù)争(zhēng)，故(gù)天(tiān)下(xià)莫(mò)能(néng)与(yǔ)之(zhī)争(zhēng)。</p>
+<h2 id="第67章-持保三宝"><a href="#第67章-持保三宝" class="headerlink" title="第67章 持保三宝"></a>第67章 持保三宝</h2><p>天(tiān)下(xià)皆(jiē)谓(wèi)我(wǒ)道(dào)大(dà)，似(sì)不(bù)肖(xiào)。<br>夫(fú)唯(wéi)大(dà)，故(gù)似(sì)不(bù)肖(xiào)。<br>若(ruò)肖(xiào)，久(jiǔ)矣(yǐ)其(qí)细(xì)也(yě)夫(fū)！<br>我(wǒ)有(yǒu)三(sān)宝(bǎo)，持(chí)而(ér)保(bǎo)之(zhī)：<br>一(yī)曰(yuē)慈(cí)，二(èr)曰(yuē)俭(jiǎn)，三(sān)曰(yuē)不(bù)敢(gǎn)为(wéi)天(tiān)下(xià)先(xiān)。<br>慈(cí)，故(gù)能(néng)勇(yǒng)；俭(jiǎn)，故(gù)能(néng)广(guǎng)；<br>不(bù)敢(gǎn)为(wéi)天(tiān)下(xià)先(xiān)，故(gù)能(néng)成(chéng)器(qì)长(zhǎng)。<br>今(jīn)舍(shě)慈(cí)且(qiě)勇(yǒng)，舍(shě)俭(jiǎn)且(qiě)广(guǎng)，<br>舍(shě)后(hòu)且(qiě)先(xiān)，死(sǐ)矣(yǐ)！<br>夫(fú)慈(cí)，以(yǐ)战(zhàn)则(zé)胜(shèng)，以(yǐ)守(shǒu)则(zé)固(gù)。<br>天(tiān)将(jiāng)救(jiù)之(zhī)，以(yǐ)慈(cí)卫(wèi)之(zhī)。</p>
+<h2 id="第68章-不争之德"><a href="#第68章-不争之德" class="headerlink" title="第68章 不争之德"></a>第68章 不争之德</h2><p>善(shàn)为(wéi)士(shì)者(zhě)，不(bù)武(wǔ)；<br>善(shàn)战(zhàn)者(zhě)，不(bù)怒(nù)；<br>善(shàn)胜(shèng)敌(dí)者(zhě)，不(bù)与(yǔ)；<br>善(shàn)用(yòng)人(rén)者(zhě)，为(wéi)之(zhī)下(xià)。<br>是(shì)谓(wèi)不(bù)争(zhēng)之(zhī)德(dé)，<br>是(shì)谓(wèi)用(yòng)人(rén)之(zhī)力(lì)，<br>是(shì)谓(wèi)配(pèi)天(tiān)，古(gǔ)之(zhī)极(jí)也(yě)。</p>
+<h2 id="第69章-哀者胜矣"><a href="#第69章-哀者胜矣" class="headerlink" title="第69章 哀者胜矣"></a>第69章 哀者胜矣</h2><p>用(yòng)兵(bīng)有(yǒu)言(yán)：<br>吾(wú)不(bù)敢(gǎn)为(wéi)主(zhǔ)，而(ér)为(wéi)客(kè)；<br>吾(wú)不(bù)敢(gǎn)进(jìn)寸(cùn)，而(ér)退(tuì)尺(chǐ)。<br>是(shì)谓(wèi)行(háng)无(wú)行(háng)，攘(rǎng)无(wú)臂(bì)，<br>执(zhí)无(wú)兵(bīng)，仍(réng)无(wú)敌(dí)。<br>祸(huò)莫(mò)大(dà)于(yú)轻(qīng)敌(dí)，轻(qīng)敌(dí)几(jī)丧(sàng)吾(wú)宝(bǎo)。<br>故(gù)抗(kàng)兵(bīng)相(xiāng)加(jiā)，哀(āi)者(zhě)胜(shèng)矣(yǐ)。</p>
+<h2 id="第70章-被褐怀玉"><a href="#第70章-被褐怀玉" class="headerlink" title="第70章 被褐怀玉"></a>第70章 被褐怀玉</h2><p>吾(wú)言(yán)甚(shèn)易(yì)知(zhī)，甚(shèn)易(yì)行(xíng)。<br>天(tiān)下(xià)莫(mò)能(néng)知(zhī)，莫(mò)能(néng)行(xíng)。<br>言(yán)有(yǒu)宗(zōng)，事(shì)有(yǒu)君(jūn)。<br>夫(fú)唯(wéi)无(wú)知(zhī)，是(shì)以(yǐ)不(bù)我(wǒ)知(zhī)。<br>知(zhī)我(wǒ)者(zhě)希(xī)，则(zé)我(wǒ)者(zhě)贵(guì)。<br>是(shì)以(yǐ)圣(shèng)人(rén)被(pī)褐(hè)而(ér)怀(huái)玉(yù)。</p>
+<h2 id="第71章-知不知矣"><a href="#第71章-知不知矣" class="headerlink" title="第71章 知不知矣"></a>第71章 知不知矣</h2><p>知(zhī)不(bù)知(zhī)，上(shàng)；<br>不(bù)知(zhī)知(zhī)，病(bìng)。<br>圣(shèng)人(rén)不(bù)病(bìng)，以(yǐ)其(qí)病(bìng)病(bìng)，是(shì)以(yǐ)不(bù)病(bìng)。</p>
+<h2 id="第72章-自知自爱"><a href="#第72章-自知自爱" class="headerlink" title="第72章 自知自爱"></a>第72章 自知自爱</h2><p>民(mín)不(bù)畏(wèi)威(wēi)，则(zé)大(dà)威(wēi)至(zhì)。<br>无(wú)狎(xiá)其(qí)所(suǒ)居(jū)，无(wú)厌(yàn)其(qí)所(suǒ)生(shēng)。<br>夫(fú)唯(wéi)不(bù)厌(yàn)，是(shì)以(yǐ)不(bù)厌(yàn)。<br>是(shì)以(yǐ)圣(shèng)人(rén)自(zì)知(zhī)不(bù)自(zì)见(jiàn)，<br>自(zì)爱(ài)不(bù)自(zì)贵(guì)。<br>故(gù)去(qù)彼(bǐ)取(qǔ)此(cǐ)。</p>
+<h2 id="第73章-天网恢恢"><a href="#第73章-天网恢恢" class="headerlink" title="第73章 天网恢恢"></a>第73章 天网恢恢</h2><p>勇(yǒng)于(yú)敢(gǎn)则(zé)杀(shā)，<br>勇(yǒng)于(yú)不(bù)敢(gǎn)则(zé)活(huó)。<br>此(cǐ)两(liǎng)者(zhě)，或(huò)利(lì)或(huò)害(hài)。<br>天(tiān)之(zhī)所(suǒ)恶(wù)，孰(shú)知(zhī)其(qí)故(gù)？<br>是(shì)以(yǐ)圣(shèng)人(rén)犹(yóu)难(nán)之(zhī)。<br>天(tiān)之(zhī)道(dào)，不(bù)争(zhēng)而(ér)善(shàn)胜(shèng)，<br>不(bù)言(yán)而(ér)善(shàn)应(yìng)，<br>不(bù)召(zhào)而(ér)自(zì)来(lái)，<br>繟(chǎn)然(rán)而(ér)善(shàn)谋(móu)。<br>天(tiān)网(wǎng)恢(huī)恢(huī)，疏(shū)而(ér)不(bù)失(shī)。</p>
+<h2 id="第74章-民不畏死"><a href="#第74章-民不畏死" class="headerlink" title="第74章 民不畏死"></a>第74章 民不畏死</h2><p>民(mín)不(bù)畏(wèi)死(sǐ)，奈(nài)何(hé)以(yǐ)死(sǐ)惧(jù)之(zhī)？<br>若(ruò)使(shǐ)民(mín)常(cháng)畏(wèi)死(sǐ)，而(ér)为(wéi)奇(qí)者(zhě)，<br>吾(wú)得(dé)执(zhí)而(ér)杀(shā)之(zhī)，孰(shú)敢(gǎn)？<br>常(cháng)有(yǒu)司(sī)杀(shā)者(zhě)杀(shā)。<br>夫(fú)代(dài)司(sī)杀(shā)者(zhě)杀(shā)，<br>是(shì)谓(wèi)代(dài)大(dà)匠(jiàng)斫(zhuó)。<br>夫(fū)代(dài)大(dà)匠(jiàng)斫(zhuó)者(zhě)，<br>希(xī)有(yǒu)不(bù)伤(shāng)其(qí)手(shǒu)矣(yǐ)。</p>
+<h2 id="第75章-民之轻死"><a href="#第75章-民之轻死" class="headerlink" title="第75章 民之轻死"></a>第75章 民之轻死</h2><p>民(mín)之(zhī)饥(jī)，以(yǐ)其(qí)上(shàng)食(shí)税(shuì)之(zhī)多(duō)，是(shì)以(yǐ)饥(jī)。<br>民(mín)之(zhī)难(nán)治(zhì)，以(yǐ)其(qí)上(shàng)之(zhī)有(yǒu)为(wéi)，是(shì)以(yǐ)难(nán)治(zhì)。<br>民(mín)之(zhī)轻(qīng)死(sǐ)，以(yǐ)其(qí)上(shàng)求(qiú)生(shēng)之(zhī)厚(hòu)，是(shì)以(yǐ)轻(qīng)死(sǐ)。<br>夫(fú)唯(wéi)无(wú)以(yǐ)生(shēng)为(wéi)者(zhě)，<br>是(shì)贤(xián)于(yú)贵(guì)生(shēng)。</p>
+<h2 id="第76章-柔弱处上"><a href="#第76章-柔弱处上" class="headerlink" title="第76章 柔弱处上"></a>第76章 柔弱处上</h2><p>人(rén)之(zhī)生(shēng)也(yě)柔(róu)弱(ruò)，其(qí)死(sǐ)也(yě)坚(jiān)强(qiáng)。<br>万(wàn)物(wù)草(cǎo)木(mù)之(zhī)生(shēng)也(yě)柔(róu)脆(cuì)，其(qí)死(sǐ)也(yě)枯(kū)槁(gǎo)。<br>故(gù)坚(jiān)强(qiáng)者(zhě)死(sǐ)之(zhī)徒(tú)，<br>柔(róu)弱(ruò)者(zhě)生(shēng)之(zhī)徒(tú)。<br>是(shì)以(yǐ)兵(bīng)强(qiáng)则(zé)不(bù)胜(shèng)，木(mù)强(qiáng)则(zé)兵(bīng)。<br>强(qiáng)大(dà)处(chǔ)下(xià)，柔(róu)弱(ruò)处(chǔ)上(shàng)。</p>
+<h2 id="第77章-功成不处"><a href="#第77章-功成不处" class="headerlink" title="第77章 功成不处"></a>第77章 功成不处</h2><p>天(tiān)之(zhī)道(dào)，其(qí)犹(yóu)张(zhāng)弓(gōng)与(yǔ)？<br>高(gāo)者(zhě)抑(yì)之(zhī)，下(xià)者(zhě)举(jǔ)之(zhī)；<br>有(yǒu)余(yú)者(zhě)损(sǔn)之(zhī)，不(bù)足(zú)者(zhě)补(bǔ)之(zhī)。<br>天(tiān)之(zhī)道(dào)，损(sǔn)有(yǒu)余(yú)而(ér)补(bǔ)不(bù)足(zú)。<br>人(rén)之(zhī)道(dào)，则(zé)不(bù)然(rán)，<br>损(sǔn)不(bù)足(zú)以(yǐ)奉(fèng)有(yǒu)余(yú)。<br>孰(shú)能(néng)有(yǒu)余(yú)以(yǐ)奉(fèng)天(tiān)下(xià)？<br>唯(wéi)有(yǒu)道(dào)者(zhě)。<br>是(shì)以(yǐ)圣(shèng)人(rén)为(wéi)而(ér)不(bù)恃(shì)，<br>功(gōng)成(chéng)而(ér)不(bù)处(chǔ)，其(qí)不(bù)欲(yù)见(xiàn)贤(xián)。</p>
+<h2 id="第78章-柔之胜刚"><a href="#第78章-柔之胜刚" class="headerlink" title="第78章 柔之胜刚"></a>第78章 柔之胜刚</h2><p>天(tiān)下(xià)莫(mò)柔(róu)弱(ruò)于(yú)水(shuǐ)，<br>而(ér)攻(gōng)坚(jiān)强(qiáng)者(zhě)莫(mò)之(zhī)能(néng)胜(shèng)。<br>以(yǐ)其(qí)无(wú)以(yǐ)易(yì)之(zhī)。<br>柔(róu)之(zhī)胜(shèng)刚(gāng)，弱(ruò)之(zhī)胜(shèng)强(qiáng)，<br>天(tiān)下(xià)莫(mò)不(bù)知(zhī)，莫(mò)能(néng)行(xíng)。<br>是(shì)以(yǐ)圣(shèng)人(rén)云(yún)：<br>受(shòu)国(guó)之(zhī)垢(gòu)，是(shì)谓(wèi)社(shè)稷(jì)主(zhǔ)；<br>受(shòu)国(guó)不(bù)祥(xiáng)，是(shì)为(wèi)天(tiān)下(xià)王(wáng)。<br>正(zhèng)言(yán)若(ruò)反(fǎn)。</p>
+<h2 id="第79章-报怨以德"><a href="#第79章-报怨以德" class="headerlink" title="第79章 报怨以德"></a>第79章 报怨以德</h2><p>和(hé)大(dà)怨(yuàn)，必(bì)有(yǒu)余(yú)怨(yuàn)；<br>安(ān)可(kě)以(yǐ)为(wéi)善(shàn)？<br>是(shì)以(yǐ)圣(shèng)人(rén)执(zhí)左(zuǒ)契(qì)，<br>而(ér)不(bù)责(zé)于(yú)人(rén)。<br>有(yǒu)德(dé)司(sī)契(qì)，无(wú)德(dé)司(sī)彻(chè)。<br>天(tiān)道(dào)无(wú)亲(qīn)，常(cháng)与(yǔ)善(shàn)人(rén)。</p>
+<h2 id="第80章-小国寡民"><a href="#第80章-小国寡民" class="headerlink" title="第80章 小国寡民"></a>第80章 小国寡民</h2><p>小(xiǎo)国(guó)寡(guǎ)民(mín)。<br>使(shǐ)有(yǒu)什(shí)伯(bǎi)之(zhī)器(qì)而(ér)不(bù)用(yòng)；<br>使(shǐ)民(mín)重(zhòng)死(sǐ)而(ér)不(bù)远(yuǎn)徙(xǐ)。<br>虽(suī)有(yǒu)舟(zhōu)舆(yú)，无(wú)所(suǒ)乘(chéng)之(zhī)；<br>虽(suī)有(yǒu)甲(jiǎ)兵(bīng)，无(wú)所(suǒ)陈(chén)之(zhī)。<br>使(shǐ)民(mín)复(fù)结(jié)绳(shéng)而(ér)用(yòng)之(zhī)。<br>甘(gān)其(qí)食(shí)，美(měi)其(qí)服(fú)，<br>安(ān)其(qí)居(jū)，乐(lè)其(qí)俗(sú)。<br>邻(lín)国(guó)相(xiāng)望(wàng)，鸡(jī)犬(quǎn)之(zhī)声(shēng)相(xiāng)闻(wén)，<br>民(mín)至(zhì)老(lǎo)死(sǐ)，不(bù)相(xiāng)往(wǎng)来(lái)。</p>
+<h2 id="第81章-为而不争"><a href="#第81章-为而不争" class="headerlink" title="第81章 为而不争"></a>第81章 为而不争</h2><p>信(xìn)言(yán)不(bù)美(měi)，美(měi)言(yán)不(bù)信(xìn)。<br>善(shàn)者(zhě)不(bù)辩(biàn)，辩(biàn)者(zhě)不(bù)善(shàn)。<br>知(zhī)者(zhě)不(bù)博(bó)，博(bó)者(zhě)不(bù)知(zhī)。<br>圣(shèng)人(rén)不(bù)积(jī)，既(jì)以(yǐ)为(wéi)人(rén)，己(jǐ)愈(yù)有(yǒu)；<br>既(jì)以(yǐ)与(yǔ)人(rén)，己(jǐ)愈(yù)多(duō)。<br>天(tiān)之(zhī)道(dào)，利(lì)而(ér)不(bù)害(hài)；<br>圣(shèng)人(rén)之(zhī)道(dào)，为(wéi)而(ér)不(bù)争(zhēng)。</p>
+
+		</div>
+
+		
+
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2026/04/20/%E2%80%9C%E8%A5%BF%E9%83%A8%E7%82%B9%E5%AD%90%E7%8E%8B%E2%80%9D/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">“西部点子王”</span>
+						<span class="post-nav-item">Next posts</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">On this page</div>
+		<div class="page-title">道德经拼音版</div>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%81%93%E5%BE%B7%E7%BB%8F%E6%8B%BC%E9%9F%B3%E7%89%88"><span class="nav-text">道德经拼音版</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%85%E7%AC%AC01%E7%AB%A0-%E5%A4%A9%E5%9C%B0%E4%B9%8B%E5%A7%8B"><span class="nav-text">✅第01章 天地之始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%85%E7%AC%AC02%E7%AB%A0-%E5%8A%9F%E6%88%90%E5%BC%97%E5%B1%85"><span class="nav-text">✅第02章 功成弗居</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%85%E7%AC%AC03%E7%AB%A0-%E5%9C%A3%E4%BA%BA%E4%B9%8B%E6%B2%BB"><span class="nav-text">✅第03章 圣人之治</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%85%E7%AC%AC04%E7%AB%A0-%E5%92%8C%E5%85%89%E5%90%8C%E5%B0%98"><span class="nav-text">✅第04章 和光同尘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%85%E7%AC%AC05%E7%AB%A0-%E5%A4%9A%E8%A8%80%E6%95%B0%E7%A9%B7"><span class="nav-text">✅第05章 多言数穷</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%85%E7%AC%AC06%E7%AB%A0-%E8%B0%B7%E7%A5%9E%E4%B8%8D%E6%AD%BB"><span class="nav-text">✅第06章 谷神不死</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%85%E7%AC%AC07%E7%AB%A0-%E5%A4%A9%E9%95%BF%E5%9C%B0%E4%B9%85"><span class="nav-text">✅第07章 天长地久</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%85%E7%AC%AC08%E7%AB%A0-%E4%B8%8A%E5%96%84%E8%8B%A5%E6%B0%B4"><span class="nav-text">✅第08章 上善若水</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%85%E7%AC%AC09%E7%AB%A0-%E6%8C%81%E8%80%8C%E7%9B%88%E4%B9%8B"><span class="nav-text">✅第09章 持而盈之</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%85%E7%AC%AC10%E7%AB%A0-%E6%98%8E%E7%99%BD%E5%9B%9B%E8%BE%BE"><span class="nav-text">✅第10章 明白四达</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%85%E7%AC%AC11%E7%AB%A0-%E6%97%A0%E4%B9%8B%E4%B8%BA%E7%94%A8"><span class="nav-text">✅第11章 无之为用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%85%E7%AC%AC12%E7%AB%A0-%E5%8E%BB%E5%BD%BC%E5%8F%96%E6%AD%A4"><span class="nav-text">✅第12章 去彼取此</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%85%E7%AC%AC13%E7%AB%A0-%E5%AE%A0%E8%BE%B1%E4%B8%8D%E6%83%8A"><span class="nav-text">✅第13章 宠辱不惊</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%85%E7%AC%AC14%E7%AB%A0-%E6%89%A7%E5%8F%A4%E4%B9%8B%E9%81%93"><span class="nav-text">✅第14章 执古之道</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%85%E7%AC%AC15%E7%AB%A0-%E5%BE%AE%E5%A6%99%E7%8E%84%E9%80%9A"><span class="nav-text">✅第15章 微妙玄通</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%85%E7%AC%AC16%E7%AB%A0-%E8%87%B4%E8%99%9A%E5%AE%88%E9%9D%99"><span class="nav-text">✅第16章 致虚守静</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%85%E7%AC%AC17%E7%AB%A0-%E5%8A%9F%E6%88%90%E4%BA%8B%E9%81%82"><span class="nav-text">✅第17章 功成事遂</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%85%E7%AC%AC18%E7%AB%A0-%E5%A4%A7%E4%BB%81%E5%A4%A7%E4%B9%89"><span class="nav-text">✅第18章 大仁大义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%85%E7%AC%AC19%E7%AB%A0-%E5%B0%91%E7%A7%81%E5%AF%A1%E6%AC%B2"><span class="nav-text">✅第19章 少私寡欲</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%85%E7%AC%AC20%E7%AB%A0-%E7%8B%AC%E5%BC%82%E4%BA%8E%E4%BA%BA"><span class="nav-text">✅第20章 独异于人</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%85%E7%AC%AC21%E7%AB%A0-%E5%AD%94%E5%BE%B7%E4%B9%8B%E5%AE%B9"><span class="nav-text">✅第21章 孔德之容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%85%E7%AC%AC22%E7%AB%A0-%E5%9C%A3%E4%BA%BA%E6%8A%B1%E4%B8%80"><span class="nav-text">✅第22章 圣人抱一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC23%E7%AB%A0-%E5%B8%8C%E8%A8%80%E8%87%AA%E7%84%B6"><span class="nav-text">第23章 希言自然</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC24%E7%AB%A0-%E7%89%A9%E6%88%96%E6%81%B6%E4%B9%8B"><span class="nav-text">第24章 物或恶之</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC25%E7%AB%A0-%E9%81%93%E6%B3%95%E8%87%AA%E7%84%B6"><span class="nav-text">第25章 道法自然</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC26%E7%AB%A0-%E5%AE%9C%E6%88%92%E8%BD%BB%E8%BA%81"><span class="nav-text">第26章 宜戒轻躁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC27%E7%AB%A0-%E5%B8%B8%E5%96%84%E6%95%91%E4%BA%BA"><span class="nav-text">第27章 常善救人</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC28%E7%AB%A0-%E5%B8%B8%E5%BE%B7%E4%B9%83%E8%B6%B3"><span class="nav-text">第28章 常德乃足</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC29%E7%AB%A0-%E5%8E%BB%E5%A5%A2%E5%8E%BB%E6%B3%B0"><span class="nav-text">第29章 去奢去泰</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC30%E7%AB%A0-%E4%B8%8D%E4%BB%A5%E5%85%B5%E5%BC%BA"><span class="nav-text">第30章 不以兵强</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC31%E7%AB%A0-%E6%81%AC%E6%B7%A1%E4%B8%BA%E4%B8%8A"><span class="nav-text">第31章 恬淡为上</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC32%E7%AB%A0-%E7%9F%A5%E6%AD%A2%E4%B8%8D%E6%AE%86"><span class="nav-text">第32章 知止不殆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC33%E7%AB%A0-%E8%87%AA%E7%9F%A5%E8%80%85%E6%98%8E"><span class="nav-text">第33章 自知者明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC34%E7%AB%A0-%E4%B8%8D%E8%87%AA%E4%B8%BA%E5%A4%A7"><span class="nav-text">第34章 不自为大</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC35%E7%AB%A0-%E5%BE%80%E8%80%8C%E4%B8%8D%E5%AE%B3"><span class="nav-text">第35章 往而不害</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC36%E7%AB%A0-%E6%9F%94%E5%BC%B1%E5%88%9A%E5%BC%BA"><span class="nav-text">第36章 柔弱刚强</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC37%E7%AB%A0-%E9%81%93%E5%B8%B8%E6%97%A0%E4%B8%BA"><span class="nav-text">第37章 道常无为</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC38%E7%AB%A0-%E5%A4%84%E5%AE%9E%E5%8E%BB%E5%8D%8E"><span class="nav-text">第38章 处实去华</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC39%E7%AB%A0-%E8%B4%B1%E4%B8%BA%E8%B4%B5%E6%9C%AC"><span class="nav-text">第39章 贱为贵本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC40%E7%AB%A0-%E6%9C%89%E7%94%9F%E4%BA%8E%E6%97%A0"><span class="nav-text">第40章 有生于无</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC41%E7%AB%A0-%E5%A4%A7%E5%99%A8%E6%99%9A%E6%88%90"><span class="nav-text">第41章 大器晚成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC42%E7%AB%A0-%E6%88%96%E6%8D%9F%E6%88%96%E7%9B%8A"><span class="nav-text">第42章 或损或益</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC43%E7%AB%A0-%E6%97%A0%E4%B8%BA%E4%B9%8B%E7%9B%8A"><span class="nav-text">第43章 无为之益</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC44%E7%AB%A0-%E7%9F%A5%E8%B6%B3%E4%B8%8D%E8%BE%B1"><span class="nav-text">第44章 知足不辱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC45%E7%AB%A0-%E5%A4%A7%E6%88%90%E8%8B%A5%E7%BC%BA"><span class="nav-text">第45章 大成若缺</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC46%E7%AB%A0-%E7%9F%A5%E8%B6%B3%E5%B8%B8%E8%B6%B3"><span class="nav-text">第46章 知足常足</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC47%E7%AB%A0-%E4%B8%8D%E4%B8%BA%E8%80%8C%E6%88%90"><span class="nav-text">第47章 不为而成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC48%E7%AB%A0-%E4%B8%BA%E5%AD%A6%E6%97%A5%E7%9B%8A"><span class="nav-text">第48章 为学日益</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC49%E7%AB%A0-%E5%9C%A3%E6%97%A0%E5%B8%B8%E5%BF%83"><span class="nav-text">第49章 圣无常心</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC50%E7%AB%A0-%E5%87%BA%E7%94%9F%E5%85%A5%E6%AD%BB"><span class="nav-text">第50章 出生入死</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC51%E7%AB%A0-%E5%B0%8A%E9%81%93%E8%B4%B5%E5%BE%B7"><span class="nav-text">第51章 尊道贵德</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC52%E7%AB%A0-%E5%A4%A9%E4%B8%8B%E6%9C%89%E5%A7%8B"><span class="nav-text">第52章 天下有始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC53%E7%AB%A0-%E8%A1%8C%E4%BA%8E%E5%A4%A7%E9%81%93"><span class="nav-text">第53章 行于大道</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC54%E7%AB%A0-%E5%96%84%E6%8A%B1%E5%A4%A7%E9%81%93"><span class="nav-text">第54章 善抱大道</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC55%E7%AB%A0-%E7%89%A9%E5%A3%AE%E5%88%99%E8%80%81"><span class="nav-text">第55章 物壮则老</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC56%E7%AB%A0-%E7%9F%A5%E8%80%85%E4%B8%8D%E8%A8%80"><span class="nav-text">第56章 知者不言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC57%E7%AB%A0-%E4%BB%A5%E6%AD%A3%E6%B2%BB%E5%9B%BD"><span class="nav-text">第57章 以正治国</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC58%E7%AB%A0-%E7%A6%8F%E7%A5%B8%E7%9B%B8%E5%80%9A"><span class="nav-text">第58章 福祸相倚</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC59%E7%AB%A0-%E9%95%BF%E7%94%9F%E4%B9%85%E8%A7%86"><span class="nav-text">第59章 长生久视</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC60%E7%AB%A0-%E6%B2%BB%E5%9B%BD%E7%83%B9%E9%B2%9C"><span class="nav-text">第60章 治国烹鲜</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC61%E7%AB%A0-%E5%90%84%E5%BE%97%E5%85%B6%E6%89%80"><span class="nav-text">第61章 各得其所</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC62%E7%AB%A0-%E4%B8%87%E7%89%A9%E4%B9%8B%E5%A5%A5"><span class="nav-text">第62章 万物之奥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC63%E7%AB%A0-%E4%B8%BA%E5%A4%A7%E4%BA%8E%E7%BB%86"><span class="nav-text">第63章 为大于细</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC64%E7%AB%A0-%E6%85%8E%E7%BB%88%E5%A6%82%E5%A7%8B"><span class="nav-text">第64章 慎终如始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC65%E7%AB%A0-%E5%96%84%E4%B8%BA%E9%81%93%E8%80%85"><span class="nav-text">第65章 善为道者</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC66%E7%AB%A0-%E4%B8%8D%E4%BA%89%E4%B9%8B%E4%BA%89"><span class="nav-text">第66章 不争之争</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC67%E7%AB%A0-%E6%8C%81%E4%BF%9D%E4%B8%89%E5%AE%9D"><span class="nav-text">第67章 持保三宝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC68%E7%AB%A0-%E4%B8%8D%E4%BA%89%E4%B9%8B%E5%BE%B7"><span class="nav-text">第68章 不争之德</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC69%E7%AB%A0-%E5%93%80%E8%80%85%E8%83%9C%E7%9F%A3"><span class="nav-text">第69章 哀者胜矣</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC70%E7%AB%A0-%E8%A2%AB%E8%A4%90%E6%80%80%E7%8E%89"><span class="nav-text">第70章 被褐怀玉</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC71%E7%AB%A0-%E7%9F%A5%E4%B8%8D%E7%9F%A5%E7%9F%A3"><span class="nav-text">第71章 知不知矣</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC72%E7%AB%A0-%E8%87%AA%E7%9F%A5%E8%87%AA%E7%88%B1"><span class="nav-text">第72章 自知自爱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC73%E7%AB%A0-%E5%A4%A9%E7%BD%91%E6%81%A2%E6%81%A2"><span class="nav-text">第73章 天网恢恢</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC74%E7%AB%A0-%E6%B0%91%E4%B8%8D%E7%95%8F%E6%AD%BB"><span class="nav-text">第74章 民不畏死</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC75%E7%AB%A0-%E6%B0%91%E4%B9%8B%E8%BD%BB%E6%AD%BB"><span class="nav-text">第75章 民之轻死</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC76%E7%AB%A0-%E6%9F%94%E5%BC%B1%E5%A4%84%E4%B8%8A"><span class="nav-text">第76章 柔弱处上</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC77%E7%AB%A0-%E5%8A%9F%E6%88%90%E4%B8%8D%E5%A4%84"><span class="nav-text">第77章 功成不处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC78%E7%AB%A0-%E6%9F%94%E4%B9%8B%E8%83%9C%E5%88%9A"><span class="nav-text">第78章 柔之胜刚</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC79%E7%AB%A0-%E6%8A%A5%E6%80%A8%E4%BB%A5%E5%BE%B7"><span class="nav-text">第79章 报怨以德</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC80%E7%AB%A0-%E5%B0%8F%E5%9B%BD%E5%AF%A1%E6%B0%91"><span class="nav-text">第80章 小国寡民</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC81%E7%AB%A0-%E4%B8%BA%E8%80%8C%E4%B8%8D%E4%BA%89"><span class="nav-text">第81章 为而不争</span></a></li></ol></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2026&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Pi Ruiyong</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        8 posts in total
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">VISITOR COUNT</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">TOTAL PAGE VIEWS</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.9.0</a></span>
+        </div>
+        
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container" role="dialog" aria-modal="true" aria-label="Image viewer">
+	<button class="image-viewer-close" type="button" aria-label="Close">
+		<i class="fa-solid fa-xmark"></i>
+	</button>
+	<button class="image-viewer-prev" type="button" aria-label="Prev">
+		<i class="fa-solid fa-chevron-left"></i>
+	</button>
+	<div class="image-viewer-frame">
+		<img src="" alt="">
+	</div>
+	<div class="image-viewer-exif-panel hidden absolute left-1/2 bottom-20 -translate-x-1/2 w-[min(92vw,420px)] max-h-[60vh] overflow-hidden rounded-2xl bg-background-color-transparent-80 p-4 text-left shadow-redefine-flat backdrop-blur-md" role="dialog" aria-label="EXIF" aria-hidden="true">
+		<div class="flex items-center justify-between mb-3">
+			<span class="text-sm font-semibold text-first-text-color">EXIF</span>
+			<button class="image-viewer-exif-close flex h-8 w-8 items-center justify-center rounded-full bg-background-color-transparent-80 text-first-text-color transition hover:bg-background-color-transparent-40" type="button" aria-label="Close">
+				<i class="fa-solid fa-xmark text-[0.65rem]"></i>
+			</button>
+		</div>
+		<div class="image-viewer-exif-cards grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[50vh] overflow-y-auto pr-1 scrollbar-hide"></div>
+		<template class="image-viewer-exif-card-template">
+			<div class="rounded-lg bg-background-color-transparent-40 px-3 py-2">
+				<div class="image-viewer-exif-card-header flex items-center gap-2 mb-1">
+					<i class="image-viewer-exif-card-icon fa-solid fa-circle-info text-xs text-third-text-color"></i>
+					<div class="image-viewer-exif-card-title text-xs font-semibold text-first-text-color"></div>
+				</div>
+				<div class="image-viewer-exif-card-items flex flex-col gap-1"></div>
+			</div>
+		</template>
+	</div>
+	<button class="image-viewer-exif-toggle flex items-center gap-2 hidden absolute left-1/2 bottom-6 -translate-x-1/2 rounded-full border border-border-color bg-background-color-transparent-80 px-4 py-2 text-first-text-color backdrop-blur-md transition hover:bg-background-color-transparent-40" type="button" aria-label="EXIF" aria-expanded="false">
+		<i class="fa-solid fa-circle-info text-xs"></i>
+		<span class="text-xs font-semibold uppercase tracking-wider">EXIF</span>
+	</button>
+	<button class="image-viewer-next" type="button" aria-label="Next">
+		<i class="fa-solid fa-chevron-right"></i>
+	</button>
+</div>
+
+
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    window.swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+
+    window.dispatchEvent(
+        new CustomEvent("redefine:swup:ready", {
+            detail: {
+                swup: window.swup,
+            },
+        }),
+    );
+</script>
+
+
+
+
+	
+<script src="/js/build/main.js" type="module"></script>
+
+
+
+    
+<script src="/js/build/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+
+
+
+  
+<script src="/js/build/libs/Typed.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+
+	
+</body>
+
+</html>
